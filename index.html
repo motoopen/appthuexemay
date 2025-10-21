@@ -66,7 +66,7 @@
       transform:translateX(100%);
       transition:transform .3s ease;
       z-index:1200;
-      padding:80px 20px;
+      padding:60px 20px 20px;
     }
     .drawer.open {transform:translateX(0);}
     .drawer a {
@@ -76,6 +76,13 @@
       transition:color 0.2s;
     }
     .drawer a:hover {color:#0af;}
+    .drawer-close {
+      position:absolute;top:16px;right:16px;
+      background:none;border:none;
+      color:#fff;font-size:1.5rem;
+      cursor:pointer;
+    }
+    .drawer-close:hover {color:#0af;}
 
     /* Overlay */
     .overlay {
@@ -132,6 +139,9 @@
 
   <!-- Drawer -->
   <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawerClose" aria-label="Đóng menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
     <a href="lienhe.html"><i class="fa-solid fa-phone"></i> Liên hệ</a>
   </div>
@@ -161,7 +171,15 @@
     const hamburger=document.getElementById("hamburger");
     const drawer=document.getElementById("drawer");
     const overlay=document.getElementById("overlay");
+    const drawerClose=document.getElementById("drawerClose");
     const clickSound=document.getElementById("clickSound");
+
+    function closeMenu(){
+      hamburger.classList.remove("active");
+      drawer.classList.remove("open");
+      overlay.classList.remove("active");
+      clickSound.play();
+    }
 
     hamburger.addEventListener("click",()=>{
       hamburger.classList.toggle("active");
@@ -169,12 +187,9 @@
       overlay.classList.toggle("active");
       clickSound.play();
     });
-    overlay.addEventListener("click",()=>{
-      hamburger.classList.remove("active");
-      drawer.classList.remove("open");
-      overlay.classList.remove("active");
-      clickSound.play();
-    });
+
+    overlay.addEventListener("click",closeMenu);
+    drawerClose.addEventListener("click",closeMenu);
   </script>
 </body>
 </html>
