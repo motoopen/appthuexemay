@@ -169,33 +169,6 @@
     }
     .footer a { color:var(--accent); font-weight:700; }
 
-    /* Quick App (radial) */
-    .quick-app {
-      position:fixed; bottom:22px; right:22px; z-index:2300;
-      width:64px; height:64px;
-    }
-    .quick-app .quick-main {
-      width:64px;height:64px;border-radius:50%;border:0;cursor:pointer;
-      background:linear-gradient(135deg,var(--accent-2),var(--accent));
-      color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.35rem;
-      box-shadow:0 0 24px rgba(0,212,255,0.18);
-      animation: pulse 1.6s infinite alternate;
-    }
-    .quick-app .quick-sub { position:absolute; right:0; bottom:0; pointer-events:none; }
-    .quick-app .quick-sub a {
-      position:absolute; width:48px;height:48px;border-radius:50%; display:flex;align-items:center;justify-content:center;
-      background:rgba(10,10,12,0.9); color:var(--accent); font-size:1.1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-      transform: scale(0); transition: transform .4s, box-shadow .3s; pointer-events:auto;
-    }
-    .quick-app.open .quick-sub a { transform: scale(1); }
-    .quick-app .quick-sub a:hover { box-shadow: 0 0 20px rgba(0,212,255,0.18); transform: scale(1.12) }
-
-    /* radial positions */
-    .quick-app.open .quick-sub a.q1 { transform: translate(-88px, 0) scale(1); }
-    .quick-app.open .quick-sub a.q2 { transform: translate(-64px, -64px) scale(1); }
-    .quick-app.open .quick-sub a.q3 { transform: translate(0, -88px) scale(1); }
-    .quick-app.open .quick-sub a.q4 { transform: translate(64px, -64px) scale(1); }
-
     /* Footer styles with fade-in animation */
     .footer-section{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.05);padding:50px 20px 64px;color:#dfefff;}
     .footer-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:1100px;margin:0 auto;}
@@ -207,11 +180,11 @@
     .footer-col ul li a:hover{color:#00d4ff;}
     .footer-bottom{text-align:center;margin-top:28px;color:#888;font-size:0.9rem;}
 
-    /* Quick call (ĐÃ SỬA VỊ TRÍ #3) */
+    /* Quick call (ĐÃ CẬP NHẬT VỊ TRÍ #4) */
     .quick-call {
       position: fixed;
-      bottom: 40px; /* Sửa từ 24px */
-      right: 38px;  /* Sửa từ 22px */
+      bottom: 64px; /* Vị trí mới */
+      right: 36px;  /* Vị trí mới */
       z-index: 2400;
     }
     .quick-call .quick-main{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#007aff,#00d4ff);border:0;cursor:pointer;color:#fff;box-shadow:0 0 18px rgba(0,212,255,0.4);animation:pulse 1.6s infinite alternate;}
@@ -235,10 +208,10 @@
       .topbar{ left:12px; transform:none; width:calc(100% - 24px); border-radius:10px; }
       .hero{ margin-top:90px; padding:22px; }
     }
-    @media (max-width:600px) { /* Media query bổ sung #3 */
+    @media (max-width:600px) { /* Media query cập nhật #4 */
       .quick-call {
-        bottom: 70px; /* Đẩy lên cao hơn để tránh QuickApp (64px) và footer (22px) */
-        right: 30px;
+        bottom: 90px;
+        right: 28px;
       }
     }
     @media (max-width:520px){
@@ -270,7 +243,7 @@
       }
     }
 
-    /* === Motoopen Splash Pro: 3D Spin + Light Sweep (BỔ SUNG #2) === */
+    /* === Motoopen Splash Pro: 3D Spin + Light Sweep (Giữ nguyên) === */
     #splash-screen {
       position: fixed;
       inset: 0;
@@ -354,7 +327,7 @@
       100% { filter: drop-shadow(0 0 35px rgba(0,212,255,0.6)); }
     }
 
-    /* === Fade-in toàn trang sau Splash (BỔ SUNG #2) === */
+    /* === Fade-in toàn trang sau Splash (Giữ nguyên) === */
     body {
       opacity: 0;
       animation: fadeInApp 0.8s ease forwards 2.3s;
@@ -365,6 +338,7 @@
   </style>
 </head>
 <body>
+  <!-- Splash Intro (Giữ nguyên) -->
   <div id="splash-screen">
     <div class="splash-logo">
       <img src="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" alt="Motoopen Logo">
@@ -592,16 +566,6 @@
     </section>
   </main>
 
-  <div class="quick-app" id="quickApp" aria-hidden="false">
-    <button class="quick-main" id="quickMain" aria-label="Mở menu gọi nhanh"><i class="fa-solid fa-heart"></i></button>
-    <div class="quick-sub" aria-hidden="true">
-      <a class="q1" href="tel:0857255868" title="Gọi ngay"><i class="fa-solid fa-phone"></i></a>
-      <a class="q2" href="https://zalo.me/0857255868" target="_blank" rel="noopener" title="Chat Zalo"><i class="fa-brands fa-rocketchat"></i></a>
-      <a class="q3" href="https://motoopen.github.io/appthuexemay/banggia.pdf" target="_blank" rel="noopener" title="Tải bảng giá"><i class="fa-solid fa-file-pdf"></i></a>
-      <a class="q4" href="https://motoopen.github.io/appthuexemay/lienhe.html" title="Liên hệ"><i class="fa-solid fa-envelope"></i></a>
-    </div>
-  </div>
-
   <footer class="footer-section reveal">
     <div class="footer-container">
       <div class="footer-col tagline reveal-item">
@@ -678,14 +642,15 @@
   <button id="backTop" class="back-top" title="Lên đầu trang"><i class="fa-solid fa-arrow-up"></i></button>
 
   <div class="quick-call" id="quickCall">
-    <button class="quick-main" id="quickCallMain"><i class="fa-solid fa-heart"></i></button>
-    <div class="quick-sub">
-      <a class="q1" href="https://maps.app.goo.gl/xvQNnHTckWyjU1oK8" target="_blank" title="Bản đồ"><i class="fa-solid fa-location-dot"></i></a>
+    <button class="quick-main" id="quickCallMain" aria-label="Mở menu gọi nhanh"><i class="fa-solid fa-heart"></i></button>
+    <div class="quick-sub" aria-hidden="true">
+      <a class="q1" href="https://maps.app.goo.gl/xvQNnHTckWyjU1oK8" target="_blank" rel="noopener" title="Bản đồ"><i class="fa-solid fa-location-dot"></i></a>
       <a class="q2" href="tel:0857255868" title="Gọi ngay"><i class="fa-solid fa-phone"></i></a>
-      <a class="q3" href="https://zalo.me/0857255868" target="_blank" title="Chat Zalo"><i class="fa-brands fa-rocketchat"></i></a>
+      <a class="q3" href="https://zalo.me/0857255868" target="_blank" rel="noopener" title="Chat Zalo"><i class="fa-brands fa-rocketchat"></i></a>
     </div>
   </div>
 
+  <!-- Thẻ âm thanh startup (Giữ nguyên) -->
   <audio id="splash-sound" preload="auto">
     <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" type="audio/ogg">
     <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.mp3" type="audio/mpeg">
@@ -733,27 +698,9 @@
     drawerOverlay.addEventListener('click', closeDrawer);
     drawerClose.addEventListener('click', closeDrawer);
 
-    // Quick App Radial Menu Toggle Logic (quickApp)
-    const quickApp = document.getElementById('quickApp');
-    const quickAppMain = document.getElementById('quickMain'); // ID gốc
-
-    quickAppMain.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      quickApp.classList.toggle('open');
-      if(quickApp.classList.contains('open')) {
-        try{ blingOpen.currentTime=0; blingOpen.play(); }catch(e){}
-      } else {
-        try{ blingClose.currentTime=0; blingClose.play(); }catch(e){}
-      }
-    });
-    document.addEventListener('click', (e)=>{
-      // Đóng quickApp nếu click ra ngoài
-      if(!quickApp.contains(e.target)) quickApp.classList.remove('open');
-    });
-
-    // Quick Call Radial Menu Toggle Logic (quickCall)
+    // Quick Call Radial Menu Toggle Logic (quickCall) - Giữ nguyên
     const quickCall = document.getElementById('quickCall');
-    const quickCallMain = document.getElementById('quickCallMain'); // ID đã được đổi
+    const quickCallMain = document.getElementById('quickCallMain');
 
     quickCallMain.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -769,6 +716,7 @@
       // Đóng quickCall nếu click ra ngoài
       if(!quickCall.contains(e.target)) quickCall.classList.remove('open');
     });
+
 
     // IntersectionObserver reveal (scroll reveal) - Main content
     const mainRevealObserver = new IntersectionObserver((entries, obs) => {
@@ -815,16 +763,15 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Accessibility: ESC closes drawer and quickApp
+    // Accessibility: ESC closes drawer and quickCall (Đã loại bỏ quickApp)
     window.addEventListener('keydown', (e)=>{
       if(e.key === 'Escape'){
         closeDrawer();
-        quickApp.classList.remove('open');
         quickCall.classList.remove('open');
       }
     });
 
-    // JS splash logic (BỔ SUNG #4)
+    // JS splash logic (Giữ nguyên)
     window.addEventListener('load', () => {
       const splash = document.getElementById('splash-screen');
       const splashSound = document.getElementById('splash-sound');
@@ -846,3 +793,4 @@
   </script>
 </body>
 </html>
+
