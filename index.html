@@ -2,134 +2,171 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <title>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</title>
-  <meta name="description" content="Tổng hợp app, nhóm cho thuê xe máy Hà Nội. Liên hệ nhanh qua fanpage, nhóm, app Motoopen. Giao tận nơi, thủ tục nhanh, cọc nhẹ.">
-  <link rel="canonical" href="https://motoopen.github.io/appthuexemay/">
+  <meta name="description" content="Tổng hợp app, nhóm cho thuê xe máy Hà Nội - Motoopen. Liên hệ nhanh, cập nhật thông tin từ fanpage, nhóm uy tín.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg">
+
+  <!-- Font + Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       margin:0;
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #fff;
+      font-family:'Inter', sans-serif;
+      background:#000; /* nền đen bóng */
+      color:#fff;
     }
-    header {
-      background: rgba(13,17,23,0.85);
-      backdrop-filter: blur(10px) saturate(150%);
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    header h1 { font-size: 20px; }
-    header nav a {
-      color: #fff;
-      margin-left: 18px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    header nav a:hover { color: #58a6ff; }
 
+    /* --- NAVBAR --- */
+    .topbar {
+      position:fixed;
+      top:0;left:0;right:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 24px;
+      background:rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px) saturate(150%);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:1000;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .brand img.logo {
+      height:40px;
+      width:auto;
+      object-fit:contain;
+    }
+    .brand h3 {
+      margin:0;
+      font-size:1.2rem;
+      font-weight:700;
+      color:#fff;
+    }
+    .nav-links {
+      display:flex;
+      gap:16px;
+    }
+    .nav-links a {
+      color:#00aaff; /* xanh coban neon */
+      text-decoration:none;
+      font-weight:600;
+      padding:6px 10px;
+      border-radius:6px;
+      transition:all 0.25s;
+    }
+    .nav-links a:hover {
+      background:rgba(0,170,255,0.1);
+      color:#33ccff;
+      box-shadow:0 0 12px #00aaff;
+    }
+
+    /* --- HERO --- */
     .hero {
-      text-align: center;
-      padding: 100px 20px 60px;
+      margin-top:80px;
+      text-align:center;
+      padding:60px 20px;
     }
-    .hero h1 { font-size: 36px; margin-bottom: 12px; }
-    .hero p { font-size: 18px; opacity: 0.85; }
-
-    .cta-btn {
-      display: inline-block;
-      margin: 20px 10px;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: bold;
-      color: #fff;
-      background: linear-gradient(135deg,#007aff,#00c6ff);
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      text-decoration: none;
-      position: relative;
-      box-shadow: 0 0 20px rgba(0,122,255,0.7), 0 0 40px rgba(0,198,255,0.6);
-      animation: pulse 2s infinite;
+    .hero h1 {
+      font-size:2.2rem;
+      font-weight:800;
+      color:#fff;
     }
-    .cta-btn:hover { transform: scale(1.05); }
+    .hero p {
+      color:#ccc;
+      max-width:700px;
+      margin:12px auto 24px;
+      line-height:1.6;
+    }
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:linear-gradient(135deg,#007aff,#00d4ff);
+      padding:12px 20px;
+      border-radius:999px;
+      font-weight:700;
+      color:#fff;
+      text-decoration:none;
+      box-shadow:0 0 15px #007aff, 0 0 25px #00d4ff;
+      transition:transform .2s, box-shadow .3s;
+    }
+    .btn:hover {
+      transform:scale(1.05);
+      box-shadow:0 0 20px #00aaff, 0 0 35px #33ccff;
+    }
 
+    /* Quick Call floating */
+    .quick-call {
+      position:fixed;
+      bottom:20px;right:20px;
+      background:linear-gradient(135deg,#007aff,#00d4ff);
+      width:60px;height:60px;
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;
+      font-size:1.4rem;
+      box-shadow:0 0 15px #007aff,0 0 30px #00d4ff;
+      animation:pulse 2s infinite alternate;
+      cursor:pointer;
+      z-index:1200;
+    }
     @keyframes pulse {
-      0% { box-shadow: 0 0 10px rgba(0,122,255,0.7),0 0 20px rgba(0,198,255,0.6); }
-      50% { box-shadow: 0 0 25px rgba(0,122,255,1),0 0 50px rgba(0,198,255,0.9); }
-      100% { box-shadow: 0 0 10px rgba(0,122,255,0.7),0 0 20px rgba(0,198,255,0.6); }
+      0% { box-shadow:0 0 12px #007aff,0 0 25px #00d4ff; transform:scale(1);}
+      100% { box-shadow:0 0 25px #00d4ff,0 0 40px #33ccff; transform:scale(1.08);}
     }
 
     footer {
-      margin-top: 80px;
-      padding: 40px 20px;
-      background: rgba(13,17,23,0.95);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
+      padding:20px;
+      text-align:center;
+      color:#888;
+      font-size:0.9rem;
+      border-top:1px solid rgba(255,255,255,0.1);
+      margin-top:40px;
     }
-    footer a { color: #58a6ff; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* Quick Call Floating Button */
-    .quick-call {
-      position: fixed;
-      right: 20px;
-      bottom: 30px;
-      z-index: 2000;
-    }
-    .quick-call .main-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: none;
-      background: linear-gradient(135deg, #007aff, #00c6ff);
-      color: #fff;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(0,122,255,0.7), 0 0 35px rgba(0,198,255,0.6);
-      animation: pulse 2s infinite;
+    footer a {
+      color:#00aaff;
+      text-decoration:none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Motoopen</h1>
-    <nav>
-      <a href="#">Trang chủ</a>
-      <a href="#">Dịch vụ</a>
-      <a href="#">Liên hệ</a>
+  <header class="topbar">
+    <div class="brand">
+      <img src="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" alt="Motoopen logo" class="logo">
+      <h3>Motoopen</h3>
+    </div>
+    <nav class="nav-links">
+      <a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a>
+      <a href="#"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a>
+      <a href="#"><i class="fa-solid fa-phone"></i> Liên hệ</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Tổng hợp app, nhóm cho thuê xe máy</h1>
-    <p>Khám phá các fanpage và nhóm uy tín về thuê xe máy tại Hà Nội. Giao xe tận nơi, thủ tục nhanh chóng, cọc nhẹ.</p>
-    <a href="tel:0857255868" class="cta-btn"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
-    <a href="https://zalo.me/0857255868" class="cta-btn"><i class="fa-brands fa-facebook-messenger"></i> Chat Zalo</a>
+    <h1>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</h1>
+    <p>Khám phá danh sách các app và nhóm Facebook uy tín về thuê xe máy tại Hà Nội: từ Long Biên, Gia Lâm, Phố Cổ đến Hoàn Kiếm.  
+    Kết nối nhanh, cọc nhẹ, giao tận nơi 24/7.</p>
+    <a class="btn" href="tel:0857255868"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
   </section>
 
+  <div class="quick-call">
+    <i class="fa-solid fa-phone"></i>
+  </div>
+
   <footer>
-    <h3>Liên hệ</h3>
-    <p>
-      <a href="tel:0857255868"><i class="fa-solid fa-phone"></i> 0857 255 868</a><br>
-      <a href="mailto:motoopen12@gmail.com"><i class="fa-solid fa-envelope"></i> motoopen12@gmail.com</a><br>
-      <a href="https://maps.app.goo.gl/dTLAo1aHMvytByf99" target="_blank"><i class="fa-solid fa-location-dot"></i> 114 Nguyễn Văn Cừ, Long Biên, Hà Nội</a>
-    </p>
-    <p style="margin-top:20px;">
-      © 2025 <a href="https://motoopen.github.io/appthuexemay/">@ Motoopen</a> – Cho thuê xe máy Hà Nội
+    <p><i class="fa-solid fa-copyright"></i> 2025 
+      <a href="https://motoopen.github.io/chothuexemayhanoi/">@ Motoopen</a> – Cho thuê xe máy Hà Nội. All Rights Reserved.
     </p>
   </footer>
-
-  <!-- Quick Call Floating -->
-  <div class="quick-call">
-    <button class="main-btn"><i class="fa-solid fa-phone"></i></button>
-  </div>
 </body>
 </html>
