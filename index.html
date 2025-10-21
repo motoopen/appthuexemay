@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
   <title>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</title>
-  <meta name="description" content="Tổng hợp app, nhóm cho thuê xe máy Hà Nội - Motoopen. Liên hệ nhanh, cập nhật thông tin từ fanpage, nhóm uy tín.">
+  <meta name="description" content="Tổng hợp app, nhóm Facebook và dịch vụ thuê xe máy tại Hà Nội: Long Biên, Gia Lâm, Phố Cổ, Hoàn Kiếm... Giao xe tận nơi, cọc nhẹ, hỗ trợ 24/7.">
+  <link rel="canonical" href="https://motoopen.github.io/appthuexemay/">
 
   <!-- Favicon -->
   <link rel="icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg" type="image/jpeg">
@@ -19,44 +19,32 @@
     body {
       margin:0;
       font-family:'Inter', sans-serif;
-      background:#000; /* nền đen */
+      background:#000;
       color:#fff;
     }
 
-    /* --- NAVBAR --- */
+    /* NAVBAR */
     .topbar {
       position:fixed;
       top:0;left:0;right:0;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding:16px 26px;
+      padding:12px 22px;
       background:rgba(0,0,0,0.85);
       backdrop-filter: blur(14px) saturate(150%);
       border-bottom:1px solid rgba(255,255,255,0.1);
       z-index:1000;
-      box-shadow:0 6px 24px rgba(0,0,0,0.6);
-      transition:all 0.3s ease;
     }
-    .topbar.shrink {
-      padding:8px 20px;
-      background:rgba(0,0,0,0.95);
-    }
-
     .brand {
       display:flex;
       align-items:center;
       gap:10px;
-      transition:all .3s ease;
     }
     .brand img.logo {
       height:42px;
       width:auto;
-      object-fit:contain;
-      transition:transform 0.3s, filter 0.3s, height 0.3s;
-    }
-    .topbar.shrink .brand img.logo {
-      height:34px;
+      transition:transform 0.3s, filter 0.3s;
     }
     .brand img.logo:hover {
       transform:scale(1.1);
@@ -64,64 +52,148 @@
     }
     .brand h3 {
       margin:0;
-      font-size:1.25rem;
+      font-size:1.2rem;
       font-weight:700;
       color:#fff;
-      letter-spacing:0.5px;
-      transition:all .3s ease;
-    }
-    .topbar.shrink .brand h3 {
-      font-size:1.1rem;
     }
 
-    .nav-links {
+    /* Hamburger Neon */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items:center;
+      gap: 6px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#007aff,#00d4ff);
+      box-shadow: 0 0 15px #007aff, 0 0 30px #00d4ff;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulseGlow 2s infinite ease-in-out;
+      z-index:1100;
+    }
+    .hamburger:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 0 25px #007aff, 0 0 50px #00d4ff;
+    }
+    .hamburger .bar {
+      width: 24px;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: all 0.4s ease;
+    }
+    .hamburger.active .bar:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px #007aff, 0 0 30px #00d4ff;
+      }
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 25px #007aff, 0 0 50px #00d4ff;
+      }
+    }
+
+    /* Drawer */
+    .drawer {
+      position:fixed;
+      top:0;right:-80px;
+      width:80px;
+      height:100%;
+      background:rgba(0,0,0,0.95);
+      backdrop-filter:blur(16px);
+      box-shadow:-4px 0 18px rgba(0,0,0,0.6);
+      padding:80px 10px;
       display:flex;
-      gap:20px;
+      flex-direction:column;
+      align-items:center;
+      gap:28px;
+      transition:right 0.4s ease;
+      z-index:1050;
     }
-    .nav-links a {
-      color:#00aaff; /* xanh neon */
-      text-decoration:none;
-      font-weight:600;
-      padding:8px 14px;
-      border-radius:10px;
-      transition:all 0.3s ease;
+    .drawer.open { right:0; }
+
+    .drawer a {
+      color:#00aaff;
+      font-size:1.5rem;
       position:relative;
+      text-decoration:none;
+      opacity:0;
+      transform:translateX(30px);
     }
-    .nav-links a::after {
-      content:"";
-      position:absolute;
-      bottom:2px;left:0;
-      width:0;height:2px;
-      background:linear-gradient(90deg,#00aaff,#33ccff);
-      transition:width .3s;
-      border-radius:2px;
+    .drawer.open a {
+      animation: slideIn 0.4s forwards, vibrate 0.3s 0.5s ease-in-out;
     }
-    .nav-links a:hover {
+    .drawer.open a:nth-child(1){ animation-delay:0.1s; }
+    .drawer.open a:nth-child(2){ animation-delay:0.25s; }
+
+    @keyframes slideIn {
+      from { opacity:0; transform:translateX(30px); }
+      to { opacity:1; transform:translateX(0); }
+    }
+    @keyframes vibrate {
+      0% { transform:translateX(0); }
+      25% { transform:translateX(-2px); }
+      50% { transform:translateX(2px); }
+      75% { transform:translateX(-1px); }
+      100% { transform:translateX(0); }
+    }
+    .drawer a:hover {
       color:#33ccff;
       text-shadow:0 0 8px #00d4ff;
     }
-    .nav-links a:hover::after {
-      width:100%;
+
+    .drawer a::after {
+      content:attr(data-tip);
+      position:absolute;
+      left:-110px;
+      top:50%;
+      transform:translateY(-50%);
+      background:#111;
+      color:#fff;
+      font-size:0.85rem;
+      padding:4px 8px;
+      border-radius:6px;
+      white-space:nowrap;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .3s, left .3s;
+    }
+    .drawer a:hover::after {
+      opacity:1;
+      left:-100px;
     }
 
-    /* --- HERO --- */
+    .overlay {
+      position:fixed;
+      top:0;left:0;right:0;bottom:0;
+      background:rgba(0,0,0,0.5);
+      display:none;
+      z-index:1040;
+    }
+    .overlay.active {display:block;}
+
+    /* Hero */
     .hero {
-      margin-top:100px;
+      margin-top:90px;
       text-align:center;
       padding:70px 20px;
     }
-    .hero h1 {
-      font-size:2.4rem;
-      font-weight:800;
-      color:#fff;
-    }
-    .hero p {
-      color:#ccc;
-      max-width:700px;
-      margin:14px auto 28px;
-      line-height:1.6;
-      font-size:1.05rem;
-    }
+    .hero h1 {font-size:2.2rem;font-weight:800;}
+    .hero p {color:#ccc;max-width:700px;margin:14px auto 28px;line-height:1.6;}
+
     .btn {
       display:inline-flex;
       align-items:center;
@@ -140,7 +212,7 @@
       box-shadow:0 0 22px #00aaff, 0 0 38px #33ccff;
     }
 
-    /* Quick Call floating */
+    /* Quick Call */
     .quick-call {
       position:fixed;
       bottom:20px;right:20px;
@@ -148,16 +220,20 @@
       width:62px;height:62px;
       border-radius:50%;
       display:flex;align-items:center;justify-content:center;
-      color:#fff;
-      font-size:1.4rem;
+      color:#fff;font-size:1.4rem;
       box-shadow:0 0 15px #007aff,0 0 30px #00d4ff;
-      animation:pulse 2s infinite alternate;
-      cursor:pointer;
-      z-index:1200;
+      animation:heartbeat 1.8s infinite ease-in-out, neonGlow 2s infinite alternate;
+      cursor:pointer;z-index:1200;
     }
-    @keyframes pulse {
-      0% { box-shadow:0 0 12px #007aff,0 0 25px #00d4ff; transform:scale(1);}
-      100% { box-shadow:0 0 28px #00d4ff,0 0 45px #33ccff; transform:scale(1.08);}
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1) translateX(0);}
+      25% { transform: scale(1.1) translateX(-2px);}
+      50% { transform: scale(0.95) translateX(2px);}
+      75% { transform: scale(1.05) translateX(-1px);}
+    }
+    @keyframes neonGlow {
+      0%,100% { box-shadow:0 0 15px #007aff,0 0 30px #00d4ff,0 0 50px #007aff;}
+      50% { box-shadow:0 0 25px #007aff,0 0 50px #00d4ff,0 0 70px #007aff;}
     }
 
     footer {
@@ -168,24 +244,30 @@
       border-top:1px solid rgba(255,255,255,0.1);
       margin-top:50px;
     }
-    footer a {
-      color:#00aaff;
-      text-decoration:none;
-    }
+    footer a {color:#00aaff;text-decoration:none;}
   </style>
 </head>
 <body>
-  <header class="topbar" id="navbar">
+  <header class="topbar">
     <div class="brand">
       <img src="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" alt="Motoopen logo" class="logo">
       <h3>Motoopen</h3>
     </div>
-    <nav class="nav-links">
-      <a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a>
-      <a href="tel:0857255868"><i class="fa-solid fa-phone"></i> Liên hệ</a>
-    </nav>
+    <div class="hamburger" id="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </header>
 
+  <!-- Drawer -->
+  <div class="drawer" id="drawer">
+    <a href="https://motoopen.github.io/appthuexemay/" data-tip="Trang chủ"><i class="fa-solid fa-house"></i></a>
+    <a href="tel:0857255868" data-tip="Liên hệ"><i class="fa-solid fa-phone"></i></a>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero -->
   <section class="hero">
     <h1>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</h1>
     <p>Khám phá danh sách app & nhóm Facebook uy tín về thuê xe máy tại Hà Nội: Long Biên, Gia Lâm, Phố Cổ, Hoàn Kiếm...  
@@ -193,25 +275,34 @@
     <a class="btn" href="tel:0857255868"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
   </section>
 
+  <!-- Quick Call -->
   <div class="quick-call">
     <i class="fa-solid fa-phone"></i>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p><i class="fa-solid fa-copyright"></i> 2025 
       <a href="https://motoopen.github.io/chothuexemayhanoi/">@ Motoopen</a> – Cho thuê xe máy Hà Nội. All Rights Reserved.
     </p>
   </footer>
 
+  <!-- Script -->
   <script>
-    // Shrink navbar on scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if(window.scrollY > 40){
-        navbar.classList.add('shrink');
-      } else {
-        navbar.classList.remove('shrink');
-      }
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      drawer.classList.remove('open');
+      overlay.classList.remove('active');
     });
   </script>
 </body>
