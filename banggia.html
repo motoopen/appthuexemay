@@ -128,7 +128,6 @@
       box-shadow:0 18px 60px rgba(0,0,0,0.7);
       background: linear-gradient(180deg, rgba(20,20,22,0.6), rgba(6,6,8,0.75));
       padding:34px 26px;
-      text-align: center; /* Thêm căn giữa cho Hero section */
     }
     .hero .kicker { display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),var(--accent)); font-weight:800; color:#fff; font-size:0.86rem; box-shadow: 0 8px 22px rgba(0,212,255,0.06); }
     .hero h1 { margin:10px 0 8px; font-size:clamp(28px,5vw,40px); line-height:1.02; font-weight:900; letter-spacing:-0.6px; color: #ecfeff; text-shadow:0 6px 30px rgba(0,212,255,0.04); }
@@ -233,6 +232,12 @@
       color:#ffd700;
       white-space:nowrap;
     }
+    
+    .price-table .note-col {
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-style: italic;
+    }
 
     .note-list {
       list-style:none;
@@ -255,26 +260,27 @@
     }
     
     /* Responsive cho bảng giá */
-    @media (max-width: 768px) { /* Điều chỉnh breakpoint cho bảng giá responsive */
+    @media (max-width: 650px) {
         .price-table {
             display: block;
             overflow-x: auto;
             white-space: nowrap;
         }
+        /* Loại bỏ CSS display: block cho table/thead/tbody/th/td/tr để giữ responsive table scroll */
+        /* Nếu không muốn scroll, hãy bật lại đoạn CSS dưới đây */
+        /*
         .price-table thead, .price-table tbody, .price-table th, .price-table td, .price-table tr {
             display: block;
         }
         .price-table thead {
-            display: none; /* Ẩn header trên mobile để chuyển sang dạng label */
+            display: none;
         }
-        
         .price-table tr {
             border: 1px solid rgba(255,255,255,0.06);
             margin-bottom: 15px;
             border-radius: 10px;
             overflow: hidden;
         }
-        
         .price-table td {
             text-align: right;
             position: relative;
@@ -283,7 +289,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.02);
             background: none !important;
         }
-        
         .price-table td::before {
             content: attr(data-label);
             position: absolute;
@@ -295,24 +300,18 @@
             font-weight: 700;
             color: var(--accent);
         }
-
-        /* Định nghĩa lại content cho mobile (Quan trọng!) */
-        .price-table tr td:nth-child(1)::before { content: "Loại xe"; }
-        .price-table tr td:nth-child(2)::before { content: "1 Ngày"; }
-        .price-table tr td:nth-child(3)::before { content: "3 Ngày"; }
-        .price-table tr td:nth-child(4)::before { content: "7 Ngày"; }
-        .price-table tr td:nth-child(5)::before { content: "1 Tháng"; }
-        .price-table tr td:nth-child(6)::before { content: "Ghi chú"; }
-        
-        .price-table tr td:last-child {
-            border-bottom: none;
-        }
+        */
         
         .price-table .price-val {
             display: inline-block;
-            background: rgba(0,212,255,0.08);
-            padding: 4px 8px;
+            /* background: rgba(0,212,255,0.08); Bỏ background để không làm rối responsive scroll */
+            padding: 2px 0;
             border-radius: 6px;
+        }
+        
+        /* Cần điều chỉnh để đảm bảo cột Ghi chú vẫn dễ đọc */
+        .price-table th:last-child, .price-table td:last-child {
+            min-width: 150px; /* Đảm bảo cột Ghi chú có đủ không gian */
         }
     }
 
@@ -533,22 +532,30 @@
 
   <main id="main" class="container" role="main">
     <section class="hero reveal" aria-labelledby="hero-title">
-      <div class="kicker">Minh bạch & Cập nhật</div>
+      <div class="kicker">Minh bạch & Cập nhật 2025</div>
+      
       <h1 id="hero-title">Bảng Giá Thuê Xe Máy Hà Nội 2025 - Motoopen</h1>
-      <p class="lead">Motoopen cam kết giao xe tận nơi (khu vực trung tâm), thủ tục đơn giản, cọc nhẹ chỉ từ 500k. Giá thuê ưu đãi đặc biệt khi thuê dài ngày (từ 3 ngày trở lên) và thuê tháng. Hỗ trợ tư vấn, xác nhận xe qua Zalo 24/7.
-      </p>
+      
+      <p class="lead">Motoopen cam kết công khai **bảng giá thuê xe máy** theo ngày, tuần, tháng với mức cọc nhẹ, giao xe tận nơi (khu vực nội thành). Giá đã bao gồm phí dịch vụ, không phát sinh chi phí ẩn. Hỗ trợ thủ tục nhanh chóng, chỉ 15 phút là có xe.</p>
 
-      <div class="price-section" style="margin-top:20px;">
+      <div class="hero-cta">
+        <a class="btn" href="tel:0857255868" rel="noopener noreferrer"><i class="fa-solid fa-phone-volume"></i> Gọi ngay</a>
+        <a class="btn alt" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-rocketchat"></i> Chat Zalo</a>
+      </div>
+    </section>
+    
+    <section class="price-section">
         <div class="price-card reveal">
-            <h2><i class="fa-solid fa-tags"></i> Bảng Giá Thuê Xe Máy Chi Tiết</h2>
+            <h2><i class="fa-solid fa-tags"></i> Bảng giá thuê xe máy chi tiết (Cập nhật 2025)</h2>
+            
             <table class="price-table">
                 <thead>
                     <tr>
                         <th>Loại xe</th>
-                        <th>1 ngày</th>
+                        <th>1 ngày (24h)</th>
                         <th>3 ngày</th>
-                        <th>7 ngày</th>
-                        <th>1 tháng</th>
+                        <th>7 ngày (1 tuần)</th>
+                        <th>1 tháng (30 ngày)</th>
                         <th>Ghi chú</th>
                     </tr>
                 </thead>
@@ -559,7 +566,7 @@
                         <td data-label="3 ngày"><span class="price-val">330k</span></td>
                         <td data-label="7 ngày"><span class="price-val">700k</span></td>
                         <td data-label="1 tháng"><span class="price-val">2.000k</span></td>
-                        <td data-label="Ghi chú">Miễn cọc nếu CMND + CCCD</td>
+                        <td data-label="Ghi chú" class="note-col">Miễn cọc nếu có CMND + CCCD</td>
                     </tr>
                     <tr>
                         <td data-label="Loại xe">Xe ga Vision</td>
@@ -567,7 +574,7 @@
                         <td data-label="3 ngày"><span class="price-val">510k</span></td>
                         <td data-label="7 ngày"><span class="price-val">1.100k</span></td>
                         <td data-label="1 tháng"><span class="price-val">2.800k</span></td>
-                        <td data-label="Ghi chú">Xe mới 2023–2024</td>
+                        <td data-label="Ghi chú" class="note-col">Xe mới 2023–2024, bảo hiểm đầy đủ</td>
                     </tr>
                     <tr>
                         <td data-label="Loại xe">Xe điện</td>
@@ -575,7 +582,7 @@
                         <td data-label="3 ngày"><span class="price-val">420k</span></td>
                         <td data-label="7 ngày"><span class="price-val">900k</span></td>
                         <td data-label="1 tháng"><span class="price-val">2.500k</span></td>
-                        <td data-label="Ghi chú">Bao sạc tại nhà</td>
+                        <td data-label="Ghi chú" class="note-col">Bao sạc tại nhà (trong phạm vi)</td>
                     </tr>
                     <tr>
                         <td data-label="Loại xe">Air Blade</td>
@@ -583,21 +590,27 @@
                         <td data-label="3 ngày"><span class="price-val">570k</span></td>
                         <td data-label="7 ngày"><span class="price-val">1.200k</span></td>
                         <td data-label="1 tháng"><span class="price-val">3.000k</span></td>
-                        <td data-label="Ghi chú">Giao tận nơi miễn phí khu vực trung tâm</td>
+                        <td data-label="Ghi chú" class="note-col">Giao tận nơi miễn phí khu vực trung tâm</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-      </div>
-      
-      <p class="lead" style="font-weight:700; color:#00d4ff; text-shadow:none; margin-top:0;">
-        Liên hệ ngay để nhận giá ưu đãi và xác nhận xe. Giao xe trong 15 phút tại Hà Nội!
-      </p>
 
-      <div class="hero-cta">
-        <a class="btn" href="tel:0857255868"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
-        <a class="btn alt" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-rocketchat"></i> Chat Zalo</a>
-      </div>
+        <div class="price-card reveal">
+            <h2><i class="fa-solid fa-bullhorn"></i> Lưu ý & Chính sách Thuê xe</h2>
+            <ul class="note-list">
+                <li><i class="fa-solid fa-circle-check"></i> **Ưu đãi Dài hạn:** Giảm giá đặc biệt cho hợp đồng thuê từ 30 ngày trở lên.</li>
+                <li><i class="fa-solid fa-circle-check"></i> **Phí giao xe:** Miễn phí giao/nhận xe trong bán kính 5km (tính từ cơ sở). Vượt quá bán kính áp dụng phụ phí nhỏ.</li>
+                <li><i class="fa-solid fa-circle-check"></i> **Thủ tục đơn giản:** Chỉ cần CCCD hoặc Hộ chiếu. Cọc tiền mặt nhẹ từ 500k – 1 triệu tùy loại xe.</li>
+                <li><i class="fa-solid fa-circle-check"></i> **Hỗ trợ:** Cam kết hỗ trợ kỹ thuật và cứu hộ 24/7 qua Zalo/Hotline.</li>
+            </ul>
+        </div>
+        
+        <div class="hero-cta reveal" style="margin-top:30px;">
+            <p class="lead" style="margin-bottom:18px; color:#e6f9ff; font-weight:700;">Liên hệ ngay để nhận giá ưu đãi. Giao xe trong 15 phút tại Hà Nội.</p>
+            <a class="btn" href="tel:0857255868" rel="noopener noreferrer"><i class="fa-solid fa-phone-volume"></i> Gọi ngay</a>
+            <a class="btn alt" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-rocketchat"></i> Chat Zalo</a>
+        </div>
     </section>
   </main>
 
