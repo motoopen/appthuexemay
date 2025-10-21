@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Bảng giá thuê xe máy tại Hà Nội | Cập nhật 2025 | Motoopen</title>
-  <meta name="description" content="Cập nhật bảng giá thuê xe máy chi tiết tại Hà Nội năm 2025 của Motoopen. Bảng giá niêm yết theo ngày, theo tuần và theo tháng cho các dòng xe ga và xe số phổ biến." />
+  <title>Bảng giá thuê xe máy Hà Nội | Motoopen - Giao tận nơi, cọc nhẹ</title>
+  <meta name="description" content="Bảng giá thuê xe máy Hà Nội của Motoopen. Xe ga, xe số, xe điện. Giao tận nơi, thủ tục nhanh, hỗ trợ Zalo 24/7." />
   <link rel="canonical" href="https://motoopen.github.io/appthuexemay/banggia.html">
 
-  <meta property="og:title" content="Bảng giá thuê xe máy tại Hà Nội | Cập nhật 2025 | Motoopen" />
-  <meta property="og:description" content="Cập nhật bảng giá thuê xe máy chi tiết tại Hà Nội năm 2025 của Motoopen. Bảng giá niêm yết theo ngày, theo tuần và theo tháng cho các dòng xe ga và xe số phổ biến." />
+  <meta property="og:title" content="Bảng giá thuê xe máy Hà Nội | Motoopen - Giao tận nơi, cọc nhẹ" />
+  <meta property="og:description" content="Bảng giá thuê xe máy Hà Nội của Motoopen. Xe ga, xe số, xe điện. Giao tận nơi, thủ tục nhanh, hỗ trợ Zalo 24/7." />
   <meta property="og:url" content="https://motoopen.github.io/appthuexemay/banggia.html" />
   <meta property="og:image" content="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" />
   <meta property="og:type" content="website" />
@@ -17,8 +17,8 @@
   <meta property="og:site_name" content="Motoopen" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bảng giá thuê xe máy tại Hà Nội | Cập nhật 2025 | Motoopen" />
-  <meta name="twitter:description" content="Cập nhật bảng giá thuê xe máy chi tiết tại Hà Nội năm 2025 của Motoopen. Bảng giá niêm yết theo ngày, theo tuần và theo tháng cho các dòng xe ga và xe số phổ biến." />
+  <meta name="twitter:title" content="Bảng giá thuê xe máy Hà Nội | Motoopen - Giao tận nơi, cọc nhẹ" />
+  <meta name="twitter:description" content="Bảng giá thuê xe máy Hà Nội của Motoopen. Xe ga, xe số, xe điện. Giao tận nơi, thủ tục nhanh, hỗ trợ Zalo 24/7." />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" />
 
   <link rel="icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg" />
@@ -128,6 +128,7 @@
       box-shadow:0 18px 60px rgba(0,0,0,0.7);
       background: linear-gradient(180deg, rgba(20,20,22,0.6), rgba(6,6,8,0.75));
       padding:34px 26px;
+      text-align: center; /* Thêm căn giữa cho Hero section */
     }
     .hero .kicker { display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),var(--accent)); font-weight:800; color:#fff; font-size:0.86rem; box-shadow: 0 8px 22px rgba(0,212,255,0.06); }
     .hero h1 { margin:10px 0 8px; font-size:clamp(28px,5vw,40px); line-height:1.02; font-weight:900; letter-spacing:-0.6px; color: #ecfeff; text-shadow:0 6px 30px rgba(0,212,255,0.04); }
@@ -254,7 +255,7 @@
     }
     
     /* Responsive cho bảng giá */
-    @media (max-width: 650px) {
+    @media (max-width: 768px) { /* Điều chỉnh breakpoint cho bảng giá responsive */
         .price-table {
             display: block;
             overflow-x: auto;
@@ -295,18 +296,13 @@
             color: var(--accent);
         }
 
-        .price-table tr td:first-child::before {
-             content: "Xe thuê";
-        }
-        .price-table tr td:nth-child(2)::before {
-             content: "1 Ngày";
-        }
-        .price-table tr td:nth-child(3)::before {
-             content: "1 Tuần";
-        }
-        .price-table tr td:nth-child(4)::before {
-             content: "1 Tháng";
-        }
+        /* Định nghĩa lại content cho mobile (Quan trọng!) */
+        .price-table tr td:nth-child(1)::before { content: "Loại xe"; }
+        .price-table tr td:nth-child(2)::before { content: "1 Ngày"; }
+        .price-table tr td:nth-child(3)::before { content: "3 Ngày"; }
+        .price-table tr td:nth-child(4)::before { content: "7 Ngày"; }
+        .price-table tr td:nth-child(5)::before { content: "1 Tháng"; }
+        .price-table tr td:nth-child(6)::before { content: "Ghi chú"; }
         
         .price-table tr td:last-child {
             border-bottom: none;
@@ -538,99 +534,70 @@
   <main id="main" class="container" role="main">
     <section class="hero reveal" aria-labelledby="hero-title">
       <div class="kicker">Minh bạch & Cập nhật</div>
-      <h1 id="hero-title">Bảng giá thuê xe máy tại Hà Nội chi tiết 2025</h1>
-      <p class="lead">Motoopen cam kết công khai **bảng giá thuê xe máy** theo ngày, theo tuần và theo tháng. Tất cả giá đều đã bao gồm phí giao xe (trong khu vực giới hạn) và không phát sinh phụ phí ẩn. Vui lòng liên hệ <a href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer">Zalo/Hotline</a> để xác nhận giá chính xác và nhận ưu đãi mới nhất.</p>
+      <h1 id="hero-title">Bảng Giá Thuê Xe Máy Hà Nội 2025 - Motoopen</h1>
+      <p class="lead">Motoopen cam kết giao xe tận nơi (khu vực trung tâm), thủ tục đơn giản, cọc nhẹ chỉ từ 500k. Giá thuê ưu đãi đặc biệt khi thuê dài ngày (từ 3 ngày trở lên) và thuê tháng. Hỗ trợ tư vấn, xác nhận xe qua Zalo 24/7.
+      </p>
+
+      <div class="price-section" style="margin-top:20px;">
+        <div class="price-card reveal">
+            <h2><i class="fa-solid fa-tags"></i> Bảng Giá Thuê Xe Máy Chi Tiết</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Loại xe</th>
+                        <th>1 ngày</th>
+                        <th>3 ngày</th>
+                        <th>7 ngày</th>
+                        <th>1 tháng</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Loại xe">Xe số Wave Alpha</td>
+                        <td data-label="1 ngày"><span class="price-val">120k</span></td>
+                        <td data-label="3 ngày"><span class="price-val">330k</span></td>
+                        <td data-label="7 ngày"><span class="price-val">700k</span></td>
+                        <td data-label="1 tháng"><span class="price-val">2.000k</span></td>
+                        <td data-label="Ghi chú">Miễn cọc nếu CMND + CCCD</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Loại xe">Xe ga Vision</td>
+                        <td data-label="1 ngày"><span class="price-val">180k</span></td>
+                        <td data-label="3 ngày"><span class="price-val">510k</span></td>
+                        <td data-label="7 ngày"><span class="price-val">1.100k</span></td>
+                        <td data-label="1 tháng"><span class="price-val">2.800k</span></td>
+                        <td data-label="Ghi chú">Xe mới 2023–2024</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Loại xe">Xe điện</td>
+                        <td data-label="1 ngày"><span class="price-val">150k</span></td>
+                        <td data-label="3 ngày"><span class="price-val">420k</span></td>
+                        <td data-label="7 ngày"><span class="price-val">900k</span></td>
+                        <td data-label="1 tháng"><span class="price-val">2.500k</span></td>
+                        <td data-label="Ghi chú">Bao sạc tại nhà</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Loại xe">Air Blade</td>
+                        <td data-label="1 ngày"><span class="price-val">200k</span></td>
+                        <td data-label="3 ngày"><span class="price-val">570k</span></td>
+                        <td data-label="7 ngày"><span class="price-val">1.200k</span></td>
+                        <td data-label="1 tháng"><span class="price-val">3.000k</span></td>
+                        <td data-label="Ghi chú">Giao tận nơi miễn phí khu vực trung tâm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      
+      <p class="lead" style="font-weight:700; color:#00d4ff; text-shadow:none; margin-top:0;">
+        Liên hệ ngay để nhận giá ưu đãi và xác nhận xe. Giao xe trong 15 phút tại Hà Nội!
+      </p>
 
       <div class="hero-cta">
-        <a class="btn" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-rocketchat"></i> Chat Zalo xác nhận giá</a>
-        <a class="btn alt" href="https://motoopen.github.io/appthuexemay/lienhe.html"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
+        <a class="btn" href="tel:0857255868"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
+        <a class="btn alt" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-rocketchat"></i> Chat Zalo</a>
       </div>
-    </section>
-    
-    <section class="price-section">
-        <div class="price-card reveal">
-            <h2><i class="fa-solid fa-gauge"></i> Bảng giá thuê xe máy **xe số** (Cập nhật 2025)</h2>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Dòng xe</th>
-                        <th>Giá 1 Ngày (24h)</th>
-                        <th>Giá 1 Tuần (7 Ngày)</th>
-                        <th>Giá 1 Tháng (30 Ngày)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Dòng xe">Wave Alpha/S (Xe số đời cũ)</td>
-                        <td data-label="1 Ngày"><span class="price-val">80.000đ - 100.000đ</span></td>
-                        <td data-label="1 Tuần"><span class="price-val">500.000đ</span></td>
-                        <td data-label="1 Tháng"><span class="price-val">1.200.000đ</span></td>
-                    </tr>
-                    <tr>
-                        <td data-label="Dòng xe">Sirius/Exciter (Xe số đời mới)</td>
-                        <td data-label="1 Ngày"><span class="price-val">100.000đ - 120.000đ</span></td>
-                        <td data-label="1 Tuần"><span class="price-val">650.000đ</span></td>
-                        <td data-label="1 Tháng"><span class="price-val">1.400.000đ</span></td>
-                    </tr>
-                    <tr>
-                        <td data-label="Dòng xe">Xe 50cc (Không cần bằng lái)</td>
-                        <td data-label="1 Ngày"><span class="price-val">120.000đ - 150.000đ</span></td>
-                        <td data-label="1 Tuần"><span class="price-val">800.000đ</span></td>
-                        <td data-label="1 Tháng"><span class="price-val">1.800.000đ</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="price-card reveal">
-            <h2><i class="fa-solid fa-bicycle"></i> Bảng giá thuê xe máy **xe ga** (Cập nhật 2025)</h2>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Dòng xe</th>
-                        <th>Giá 1 Ngày (24h)</th>
-                        <th>Giá 1 Tuần (7 Ngày)</th>
-                        <th>Giá 1 Tháng (30 Ngày)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Dòng xe">Honda Vision/Click (Đời cũ)</td>
-                        <td data-label="1 Ngày"><span class="price-val">120.000đ - 150.000đ</span></td>
-                        <td data-label="1 Tuần"><span class="price-val">800.000đ</span></td>
-                        <td data-label="1 Tháng"><span class="price-val">1.800.000đ</span></td>
-                    </tr>
-                    <tr>
-                        <td data-label="Dòng xe">Air Blade/Grande/Vario</td>
-                        <td data-label="1 Ngày"><span class="price-val">150.000đ - 200.000đ</span></td>
-                        <td data-label="1 Tuần"><span class="price-val">1.000.000đ</span></td>
-                        <td data-label="1 Tháng"><span class="price-val">2.200.000đ</span></td>
-                    </tr>
-                    <tr>
-                        <td data-label="Dòng xe">Vespa/SH Mode/PCX (Cao cấp)</td>
-                        <td data-label="1 Ngày"><span class="price-val">250.000đ - 350.000đ</span></td>
-                        <td data-label="1 Tuần"><span class="price-val">1.600.000đ</span></td>
-                        <td data-label="1 Tháng"><span class="price-val">3.500.000đ</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="price-card reveal">
-            <h2><i class="fa-solid fa-circle-info"></i> Lưu ý quan trọng về Bảng giá</h2>
-            <ul class="note-list">
-                <li><i class="fa-solid fa-check"></i> **Giá thuê:** Mức giá trên là giá tham khảo, có thể thay đổi tùy thuộc vào **đời xe**, **tình trạng xe** và **thời điểm thuê** (Cuối tuần, Lễ, Tết).</li>
-                <li><i class="fa-solid fa-check"></i> **Thời gian:** Giá thuê 1 ngày được tính là **24 giờ**. Nếu thuê thêm giờ lẻ, sẽ tính phụ phí.</li>
-                <li><i class="fa-solid fa-check"></i> **Thuê tháng:** Giá thuê 1 tháng áp dụng cho hợp đồng thuê từ **30 ngày trở lên**. Ưu đãi đặc biệt cho HSSV/Người đi làm thuê dài hạn.</li>
-                <li><i class="fa-solid fa-check"></i> **Thủ tục:** Cần có CMND/CCCD/Hộ chiếu và đặt cọc nhẹ (từ 500.000đ - 2.000.000đ tùy loại xe).</li>
-                <li><i class="fa-solid fa-check"></i> **Giao nhận:** Hỗ trợ **giao nhận tận nơi** trong nội thành Hà Nội. Phụ phí giao nhận có thể áp dụng cho các khu vực xa (Vui lòng chat Zalo để xác nhận khu vực giao).</li>
-            </ul>
-        </div>
-        
-        <div class="hero-cta reveal" style="margin-top:30px;">
-            <a class="btn" href="https://motoopen.github.io/appthuexemay/lienhe.html"><i class="fa-solid fa-phone"></i> Liên hệ chi tiết</a>
-            <a class="btn alt" href="https://motoopen.github.io/chothuexemayhanoi/"><i class="fa-solid fa-globe"></i> Trang chính</a>
-        </div>
     </section>
   </main>
 
