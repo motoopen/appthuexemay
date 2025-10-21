@@ -4,302 +4,169 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</title>
-  <meta name="description" content="Tổng hợp app, nhóm Facebook và dịch vụ thuê xe máy tại Hà Nội: Long Biên, Gia Lâm, Phố Cổ, Hoàn Kiếm... Giao xe tận nơi, cọc nhẹ, hỗ trợ 24/7.">
-  <link rel="canonical" href="https://motoopen.github.io/appthuexemay/">
-
-  <!-- Favicon -->
-  <link rel="icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg" type="image/jpeg">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg">
-
-  <!-- Font + Icon -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <meta name="description" content="Tổng hợp app, nhóm cho thuê xe máy Hà Nội. Liên hệ nhanh Motoopen để thuê xe máy tại Long Biên, Gia Lâm, phố cổ, Hoàn Kiếm. Giao xe tận nơi, hỗ trợ 24/7.">
+  <link rel="icon" href="IMG_5213.jpeg">
+  <link rel="apple-touch-icon" href="IMG_5213.jpeg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
       margin:0;
-      font-family:'Inter', sans-serif;
+      font-family: Inter, sans-serif;
       background:#000;
       color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* NAVBAR */
+    a { color:#00aaff; text-decoration:none; }
+    a:hover { color:#33ccff; text-shadow:0 0 8px #00d4ff; }
+
+    /* Topbar */
     .topbar {
-      position:fixed;
-      top:0;left:0;right:0;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:12px 22px;
-      background:rgba(0,0,0,0.85);
-      backdrop-filter: blur(14px) saturate(150%);
+      position:fixed;top:0;left:0;right:0;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 20px;
+      background:rgba(0,0,0,0.9);
       border-bottom:1px solid rgba(255,255,255,0.1);
-      z-index:1000;
-    }
-    .brand {
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .brand img.logo {
-      height:42px;
-      width:auto;
-      transition:transform 0.3s, filter 0.3s;
-    }
-    .brand img.logo:hover {
-      transform:scale(1.1);
-      filter:drop-shadow(0 0 8px #00d4ff);
-    }
-    .brand h3 {
-      margin:0;
-      font-size:1.2rem;
-      font-weight:700;
-      color:#fff;
-    }
-
-    /* Hamburger Neon */
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items:center;
-      gap: 6px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg,#007aff,#00d4ff);
-      box-shadow: 0 0 15px #007aff, 0 0 30px #00d4ff;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: pulseGlow 2s infinite ease-in-out;
       z-index:1100;
     }
-    .hamburger:hover {
-      transform: scale(1.1) rotate(3deg);
-      box-shadow: 0 0 25px #007aff, 0 0 50px #00d4ff;
+    .brand {
+      display:flex;align-items:center;gap:10px;
     }
-    .hamburger .bar {
-      width: 24px;
-      height: 3px;
-      background: white;
-      border-radius: 3px;
-      transition: all 0.4s ease;
-    }
-    .hamburger.active .bar:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
-    }
-    .hamburger.active .bar:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
-    }
+    .brand img { width:38px;height:38px;border-radius:8px; }
+    .brand h3 { margin:0;font-size:1.1rem;font-weight:700;color:#fff; }
 
-    @keyframes pulseGlow {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 15px #007aff, 0 0 30px #00d4ff;
-      }
-      50% {
-        transform: scale(1.08);
-        box-shadow: 0 0 25px #007aff, 0 0 50px #00d4ff;
-      }
+    /* Hamburger */
+    .hamburger {
+      display:flex;flex-direction:column;gap:5px;
+      cursor:pointer;width:28px;z-index:1200;
     }
+    .hamburger span {
+      display:block;height:3px;width:100%;
+      background:#00aaff;border-radius:2px;
+      transition:.3s;
+      box-shadow:0 0 8px #00d4ff;
+    }
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translateY(8px);}
+    .hamburger.active span:nth-child(2){opacity:0;}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translateY(-8px);}
+
+    /* Overlay */
+    .overlay {
+      position:fixed;inset:0;background:rgba(0,0,0,0.6);
+      opacity:0;visibility:hidden;
+      transition:.4s ease;z-index:1040;
+    }
+    .overlay.active {opacity:1;visibility:visible;}
 
     /* Drawer */
     .drawer {
-      position:fixed;
-      top:0;right:-80px;
-      width:80px;
-      height:100%;
+      position:fixed;top:0;right:-100%;
+      width:70%;max-width:320px;height:100%;
       background:rgba(0,0,0,0.95);
-      backdrop-filter:blur(16px);
-      box-shadow:-4px 0 18px rgba(0,0,0,0.6);
-      padding:80px 10px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:28px;
-      transition:right 0.4s ease;
-      z-index:1050;
+      backdrop-filter:blur(18px);
+      box-shadow:-6px 0 24px rgba(0,0,0,0.6);
+      padding:90px 25px;
+      display:flex;flex-direction:column;gap:26px;
+      transition:right .4s ease;z-index:1050;
     }
     .drawer.open { right:0; }
-
     .drawer a {
-      color:#00aaff;
-      font-size:1.5rem;
-      position:relative;
-      text-decoration:none;
-      opacity:0;
-      transform:translateX(30px);
+      display:flex;align-items:center;gap:14px;
+      font-size:1.2rem;font-weight:600;color:#fff;
+      opacity:0;transform:translateX(40px);
+      transition:color .3s;
+      animation:slideIn .4s forwards;
     }
-    .drawer.open a {
-      animation: slideIn 0.4s forwards, vibrate 0.3s 0.5s ease-in-out;
-    }
-    .drawer.open a:nth-child(1){ animation-delay:0.1s; }
-    .drawer.open a:nth-child(2){ animation-delay:0.25s; }
+    .drawer.open a {opacity:1;transform:translateX(0);}
+    .drawer a i {color:#00aaff;}
+    .drawer a:hover {color:#33ccff;text-shadow:0 0 8px #00d4ff;}
 
     @keyframes slideIn {
-      from { opacity:0; transform:translateX(30px); }
-      to { opacity:1; transform:translateX(0); }
+      from {opacity:0;transform:translateX(40px);}
+      to {opacity:1;transform:translateX(0);}
     }
-    @keyframes vibrate {
-      0% { transform:translateX(0); }
-      25% { transform:translateX(-2px); }
-      50% { transform:translateX(2px); }
-      75% { transform:translateX(-1px); }
-      100% { transform:translateX(0); }
-    }
-    .drawer a:hover {
-      color:#33ccff;
-      text-shadow:0 0 8px #00d4ff;
-    }
-
-    .drawer a::after {
-      content:attr(data-tip);
-      position:absolute;
-      left:-110px;
-      top:50%;
-      transform:translateY(-50%);
-      background:#111;
-      color:#fff;
-      font-size:0.85rem;
-      padding:4px 8px;
-      border-radius:6px;
-      white-space:nowrap;
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .3s, left .3s;
-    }
-    .drawer a:hover::after {
-      opacity:1;
-      left:-100px;
-    }
-
-    .overlay {
-      position:fixed;
-      top:0;left:0;right:0;bottom:0;
-      background:rgba(0,0,0,0.5);
-      display:none;
-      z-index:1040;
-    }
-    .overlay.active {display:block;}
 
     /* Hero */
     .hero {
-      margin-top:90px;
-      text-align:center;
-      padding:70px 20px;
+      margin-top:80px;padding:50px 20px;text-align:center;
     }
-    .hero h1 {font-size:2.2rem;font-weight:800;}
-    .hero p {color:#ccc;max-width:700px;margin:14px auto 28px;line-height:1.6;}
-
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:linear-gradient(135deg,#007aff,#00d4ff);
-      padding:13px 22px;
-      border-radius:999px;
-      font-weight:700;
-      color:#fff;
-      text-decoration:none;
-      box-shadow:0 0 15px #007aff, 0 0 25px #00d4ff;
-      transition:transform .2s, box-shadow .3s;
-    }
-    .btn:hover {
-      transform:scale(1.06);
-      box-shadow:0 0 22px #00aaff, 0 0 38px #33ccff;
-    }
+    .hero h1 {font-size:2.2rem;margin-bottom:16px;}
+    .hero p {color:#ccc;max-width:700px;margin:0 auto;font-size:1.05rem;}
 
     /* Quick Call */
     .quick-call {
-      position:fixed;
-      bottom:20px;right:20px;
+      position:fixed;bottom:20px;right:20px;z-index:1500;
+    }
+    .quick-call .main-btn {
+      width:60px;height:60px;border-radius:50%;
       background:linear-gradient(135deg,#007aff,#00d4ff);
-      width:62px;height:62px;
-      border-radius:50%;
+      color:#fff;border:none;cursor:pointer;
       display:flex;align-items:center;justify-content:center;
-      color:#fff;font-size:1.4rem;
+      font-size:1.5rem;
       box-shadow:0 0 15px #007aff,0 0 30px #00d4ff;
-      animation:heartbeat 1.8s infinite ease-in-out, neonGlow 2s infinite alternate;
-      cursor:pointer;z-index:1200;
+      animation:pulse 1.6s infinite;
     }
-    @keyframes heartbeat {
-      0%,100% { transform: scale(1) translateX(0);}
-      25% { transform: scale(1.1) translateX(-2px);}
-      50% { transform: scale(0.95) translateX(2px);}
-      75% { transform: scale(1.05) translateX(-1px);}
-    }
-    @keyframes neonGlow {
-      0%,100% { box-shadow:0 0 15px #007aff,0 0 30px #00d4ff,0 0 50px #007aff;}
-      50% { box-shadow:0 0 25px #007aff,0 0 50px #00d4ff,0 0 70px #007aff;}
+    @keyframes pulse {
+      0%{transform:scale(1);}
+      50%{transform:scale(1.15);}
+      100%{transform:scale(1);}
     }
 
     footer {
-      padding:24px;
-      text-align:center;
-      color:#888;
-      font-size:0.9rem;
+      margin-top:50px;padding:20px;text-align:center;
+      font-size:0.9rem;color:#aaa;
       border-top:1px solid rgba(255,255,255,0.1);
-      margin-top:50px;
     }
-    footer a {color:#00aaff;text-decoration:none;}
+    footer a {color:#00aaff;}
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <img src="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" alt="Motoopen logo" class="logo">
+      <img src="IMG_5360.png" alt="Motoopen logo">
       <h3>Motoopen</h3>
     </div>
     <div class="hamburger" id="hamburger">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+      <span></span><span></span><span></span>
     </div>
   </header>
 
-  <!-- Drawer -->
-  <div class="drawer" id="drawer">
-    <a href="https://motoopen.github.io/appthuexemay/" data-tip="Trang chủ"><i class="fa-solid fa-house"></i></a>
-    <a href="tel:0857255868" data-tip="Liên hệ"><i class="fa-solid fa-phone"></i></a>
-  </div>
   <div class="overlay" id="overlay"></div>
+  <nav class="drawer" id="drawer">
+    <a href="https://motoopen.github.io/appthuexemay/"><i class="fa-solid fa-house"></i> Trang chủ</a>
+    <a href="tel:0857255868"><i class="fa-solid fa-phone"></i> Liên hệ</a>
+  </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</h1>
-    <p>Khám phá danh sách app & nhóm Facebook uy tín về thuê xe máy tại Hà Nội: Long Biên, Gia Lâm, Phố Cổ, Hoàn Kiếm...  
-    Giao xe tận nơi, cọc nhẹ, hỗ trợ 24/7.</p>
-    <a class="btn" href="tel:0857255868"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
-  </section>
+  <main class="hero">
+    <h1>Tổng hợp app, nhóm cho thuê xe máy</h1>
+    <p>Motoopen tổng hợp các ứng dụng, fanpage và nhóm thuê xe máy Hà Nội: Long Biên, Gia Lâm, phố cổ, Hoàn Kiếm... 
+    Nơi bạn có thể kết nối nhanh chóng, xem bảng giá, thủ tục và liên hệ trực tiếp để đặt xe.</p>
+  </main>
 
-  <!-- Quick Call -->
   <div class="quick-call">
-    <i class="fa-solid fa-phone"></i>
+    <button class="main-btn" onclick="window.location.href='tel:0857255868'">
+      <i class="fa-solid fa-phone"></i>
+    </button>
   </div>
 
-  <!-- Footer -->
   <footer>
     <p><i class="fa-solid fa-copyright"></i> 2025 
       <a href="https://motoopen.github.io/chothuexemayhanoi/">@ Motoopen</a> – Cho thuê xe máy Hà Nội. All Rights Reserved.
     </p>
   </footer>
 
-  <!-- Script -->
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const drawer = document.getElementById('drawer');
-    const overlay = document.getElementById('overlay');
+    const hamburger=document.getElementById('hamburger');
+    const drawer=document.getElementById('drawer');
+    const overlay=document.getElementById('overlay');
 
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click',()=>{
       hamburger.classList.toggle('active');
       drawer.classList.toggle('open');
       overlay.classList.toggle('active');
     });
-
-    overlay.addEventListener('click', () => {
+    overlay.addEventListener('click',()=>{
       hamburger.classList.remove('active');
       drawer.classList.remove('open');
       overlay.classList.remove('active');
