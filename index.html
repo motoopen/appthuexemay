@@ -19,7 +19,7 @@
     body {
       margin:0;
       font-family:'Inter', sans-serif;
-      background:#000; /* nền đen bóng */
+      background:#000; /* nền đen */
       color:#fff;
     }
 
@@ -30,69 +30,104 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding:12px 24px;
+      padding:16px 26px;
       background:rgba(0,0,0,0.85);
-      backdrop-filter: blur(12px) saturate(150%);
+      backdrop-filter: blur(14px) saturate(150%);
       border-bottom:1px solid rgba(255,255,255,0.1);
       z-index:1000;
+      box-shadow:0 6px 24px rgba(0,0,0,0.6);
+      transition:all 0.3s ease;
     }
+    .topbar.shrink {
+      padding:8px 20px;
+      background:rgba(0,0,0,0.95);
+    }
+
     .brand {
       display:flex;
       align-items:center;
       gap:10px;
+      transition:all .3s ease;
     }
     .brand img.logo {
-      height:40px;
+      height:42px;
       width:auto;
       object-fit:contain;
+      transition:transform 0.3s, filter 0.3s, height 0.3s;
+    }
+    .topbar.shrink .brand img.logo {
+      height:34px;
+    }
+    .brand img.logo:hover {
+      transform:scale(1.1);
+      filter:drop-shadow(0 0 8px #00d4ff);
     }
     .brand h3 {
       margin:0;
-      font-size:1.2rem;
+      font-size:1.25rem;
       font-weight:700;
       color:#fff;
+      letter-spacing:0.5px;
+      transition:all .3s ease;
     }
+    .topbar.shrink .brand h3 {
+      font-size:1.1rem;
+    }
+
     .nav-links {
       display:flex;
-      gap:16px;
+      gap:20px;
     }
     .nav-links a {
-      color:#00aaff; /* xanh coban neon */
+      color:#00aaff; /* xanh neon */
       text-decoration:none;
       font-weight:600;
-      padding:6px 10px;
-      border-radius:6px;
-      transition:all 0.25s;
+      padding:8px 14px;
+      border-radius:10px;
+      transition:all 0.3s ease;
+      position:relative;
+    }
+    .nav-links a::after {
+      content:"";
+      position:absolute;
+      bottom:2px;left:0;
+      width:0;height:2px;
+      background:linear-gradient(90deg,#00aaff,#33ccff);
+      transition:width .3s;
+      border-radius:2px;
     }
     .nav-links a:hover {
-      background:rgba(0,170,255,0.1);
       color:#33ccff;
-      box-shadow:0 0 12px #00aaff;
+      text-shadow:0 0 8px #00d4ff;
+    }
+    .nav-links a:hover::after {
+      width:100%;
     }
 
     /* --- HERO --- */
     .hero {
-      margin-top:80px;
+      margin-top:100px;
       text-align:center;
-      padding:60px 20px;
+      padding:70px 20px;
     }
     .hero h1 {
-      font-size:2.2rem;
+      font-size:2.4rem;
       font-weight:800;
       color:#fff;
     }
     .hero p {
       color:#ccc;
       max-width:700px;
-      margin:12px auto 24px;
+      margin:14px auto 28px;
       line-height:1.6;
+      font-size:1.05rem;
     }
     .btn {
       display:inline-flex;
       align-items:center;
       gap:8px;
       background:linear-gradient(135deg,#007aff,#00d4ff);
-      padding:12px 20px;
+      padding:13px 22px;
       border-radius:999px;
       font-weight:700;
       color:#fff;
@@ -101,8 +136,8 @@
       transition:transform .2s, box-shadow .3s;
     }
     .btn:hover {
-      transform:scale(1.05);
-      box-shadow:0 0 20px #00aaff, 0 0 35px #33ccff;
+      transform:scale(1.06);
+      box-shadow:0 0 22px #00aaff, 0 0 38px #33ccff;
     }
 
     /* Quick Call floating */
@@ -110,7 +145,7 @@
       position:fixed;
       bottom:20px;right:20px;
       background:linear-gradient(135deg,#007aff,#00d4ff);
-      width:60px;height:60px;
+      width:62px;height:62px;
       border-radius:50%;
       display:flex;align-items:center;justify-content:center;
       color:#fff;
@@ -122,16 +157,16 @@
     }
     @keyframes pulse {
       0% { box-shadow:0 0 12px #007aff,0 0 25px #00d4ff; transform:scale(1);}
-      100% { box-shadow:0 0 25px #00d4ff,0 0 40px #33ccff; transform:scale(1.08);}
+      100% { box-shadow:0 0 28px #00d4ff,0 0 45px #33ccff; transform:scale(1.08);}
     }
 
     footer {
-      padding:20px;
+      padding:24px;
       text-align:center;
       color:#888;
       font-size:0.9rem;
       border-top:1px solid rgba(255,255,255,0.1);
-      margin-top:40px;
+      margin-top:50px;
     }
     footer a {
       color:#00aaff;
@@ -140,22 +175,21 @@
   </style>
 </head>
 <body>
-  <header class="topbar">
+  <header class="topbar" id="navbar">
     <div class="brand">
       <img src="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" alt="Motoopen logo" class="logo">
       <h3>Motoopen</h3>
     </div>
     <nav class="nav-links">
       <a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a>
-      <a href="#"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a>
-      <a href="#"><i class="fa-solid fa-phone"></i> Liên hệ</a>
+      <a href="tel:0857255868"><i class="fa-solid fa-phone"></i> Liên hệ</a>
     </nav>
   </header>
 
   <section class="hero">
     <h1>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</h1>
-    <p>Khám phá danh sách các app và nhóm Facebook uy tín về thuê xe máy tại Hà Nội: từ Long Biên, Gia Lâm, Phố Cổ đến Hoàn Kiếm.  
-    Kết nối nhanh, cọc nhẹ, giao tận nơi 24/7.</p>
+    <p>Khám phá danh sách app & nhóm Facebook uy tín về thuê xe máy tại Hà Nội: Long Biên, Gia Lâm, Phố Cổ, Hoàn Kiếm...  
+    Giao xe tận nơi, cọc nhẹ, hỗ trợ 24/7.</p>
     <a class="btn" href="tel:0857255868"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
   </section>
 
@@ -168,5 +202,17 @@
       <a href="https://motoopen.github.io/chothuexemayhanoi/">@ Motoopen</a> – Cho thuê xe máy Hà Nội. All Rights Reserved.
     </p>
   </footer>
+
+  <script>
+    // Shrink navbar on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 40){
+        navbar.classList.add('shrink');
+      } else {
+        navbar.classList.remove('shrink');
+      }
+    });
+  </script>
 </body>
 </html>
