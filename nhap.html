@@ -1,312 +1,539 @@
 <!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ - Website Cố Định Nền Tối</title>
-    <style>
-        /*
-        ========================================
-        1. RESET & BIẾN CSS (CSS Variables)
-        ========================================
-        */
-        :root {
-            --color-bg-default: #0d1117; /* Nền tối chung cho toàn site */
-            --color-text-default: #c9d1d9; /* Chữ sáng chung */
-            --color-primary: #58a6ff; /* Màu xanh dương chủ đạo */
-            --color-link-hover-bg: rgba(255, 255, 255, 0.12); /* Hiệu ứng hover cho nút/link */
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-            /* Topbar Colors */
-            --color-topbar-bg-initial: rgba(13, 17, 23, 0.85); /* Nền glassmorphism ban đầu */
-            --color-topbar-bg-scrolled: rgba(13, 17, 23, 0.95); /* Nền khi cuộn */
-            --color-topbar-text: #ffffff;
-        }
+  <title>Tổng hợp app, nhóm cho thuê xe máy - Motoopen</title>
+  <meta name="description" content="Tổng hợp các app, fanpage và nhóm cho thuê xe máy Hà Nội - Motoopen. Danh sách nhóm, liên kết nhanh, Zalo hỗ trợ, giao tận nơi, cọc nhẹ." />
+  <link rel="canonical" href="https://motoopen.github.io/appthuexemay/">
 
-        /*
-        ========================================
-        2. CÁC THAY ĐỔI CHUNG (Global Styles)
-        ========================================
-        */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
-        }
+  <link rel="icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg">
+  <meta name="theme-color" content="#000000">
 
-        body {
-            /* 1. XÓA class "dark" -> Đã mặc định nền tối */
-            font-family: sans-serif;
-            background-color: var(--color-bg-default);
-            color: var(--color-text-default);
-            min-height: 200vh; /* Để có thể scroll */
-            line-height: 1.6;
-        }
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-        a {
-            text-decoration: none;
-            color: var(--color-text-default);
-        }
+  <style>
+    /* Reset & base */
+    :root{
+      --bg:#000;
+      --surface: rgba(255,255,255,0.03);
+      --muted:#bfbfbf;
+      --accent:#00d4ff;
+      --accent-2:#007aff;
+      --glass-border: rgba(255,255,255,0.06);
+      --card-radius:14px;
+      --maxw:1100px;
+      --neon: 0 0 18px rgba(0,212,255,0.16), 0 0 36px rgba(0,212,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#000,#050505 160%);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-y:scroll;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline;color:#33e6ff}
 
-        /*
-        ========================================
-        3. TOPBAR / MENU (Yêu cầu 2)
-        ========================================
-        */
-        #topbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            z-index: 1000;
-            /* Topbar nền đen glassmorphism (rgba(13,17,23,0.85), backdrop-filter: blur, bóng mờ) */
-            background-color: var(--color-topbar-bg-initial);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        }
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-        #topbar.scrolled {
-            /* Khi scroll thì topbar đậm hơn (rgba(13,17,23,0.95)) */
-            background-color: var(--color-topbar-bg-scrolled);
-        }
+    /* Topbar */
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 20px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--glass-border);
+      position:fixed;top:12px;left:50%;transform:translateX(-50%);
+      width: calc(100% - 32px); max-width:var(--maxw); z-index:2200;
+      border-radius:12px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand img { width:44px; height:44px; object-fit:cover; border-radius:10px; display:block; }
+    .worktime {
+      flex:1;
+      text-align:center;
+      line-height:1.05;
+      color:#e6f9ff;
+      text-shadow: 0 0 8px rgba(0,212,255,0.15);
+      font-weight:700;
+    }
+    .worktime .support { display:block; font-weight:500; font-size:0.84rem; color:var(--muted); text-shadow: 0 0 6px rgba(0,212,255,0.06); }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--color-topbar-text);
-        }
+    /* Hamburger neon */
+    .hamburger {
+      cursor:pointer;
+      width:44px; height:44px;
+      display:flex;align-items:center;justify-content:center;border-radius:10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: var(--neon);
+    }
+    .hamburger .bars{display:flex;flex-direction:column;gap:5px}
+    .hamburger span {
+      display:block;width:22px;height:3px;background:var(--accent-2);border-radius:3px;transition:all .28s;
+      box-shadow: 0 0 8px rgba(0,170,255,0.9);
+    }
+    .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.active span:nth-child(2){opacity:0;transform:scale(.6)}
+    .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-        .nav-links a {
-            /* Chữ menu màu trắng */
-            color: var(--color-topbar-text);
-            margin-left: 1.5rem;
-            padding: 0.5rem;
-            border-radius: 4px;
-        }
+    /* Drawer */
+    .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);opacity:0;pointer-events:none;transition:opacity .28s;z-index:2100;border-radius:0}
+    .drawer-overlay.active{opacity:1;pointer-events:auto}
 
-        .nav-links a:hover {
-            /* hover xanh (#58a6ff) */
-            color: var(--color-primary);
-        }
+    .drawer{
+      position:fixed;top:0;right:0;height:100vh;width:76%;max-width:420px;background:linear-gradient(180deg, rgba(10,10,12,0.96), rgba(8,8,10,0.98));
+      backdrop-filter: blur(18px);
+      transform: translateX(110%);
+      transition: transform .42s cubic-bezier(.2,.9,.2,1);
+      z-index:2150;padding:84px 26px 22px;border-left:1px solid rgba(0,0,0,0.35);
+      overflow:auto;
+    }
+    .drawer.open{transform:translateX(0)}
+    .drawer-close{position:absolute;top:18px;right:18px;background:none;border:0;color:#fff;font-size:1.25rem;cursor:pointer}
+    .drawer .link{display:flex;gap:12px;align-items:center;padding:12px 8px;border-radius:10px;color:#fff;font-weight:700;margin-bottom:8px;text-decoration:none}
+    .drawer .link i{width:26px;text-align:center;color:var(--accent)}
+    .drawer .link:hover{background:rgba(0,212,255,0.04);color:#e6f9ff}
 
-        /*
-        ========================================
-        4. NÚT CTA (Yêu cầu 3)
-        ========================================
-        */
-        .btn-cta-menu {
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            /* Giữ hiệu ứng sáng neon */
-            background-image: linear-gradient(45deg, #2f81f7, #58a6ff);
-            color: white;
-            box-shadow: 0 0 10px rgba(88, 166, 255, 0.6), 0 0 20px rgba(88, 166, 255, 0.4);
-            animation: pulse-cta 1.5s infinite alternate;
-            margin-left: 1rem;
-        }
+    /* Hero */
+    .hero {
+      margin:110px auto 18px;
+      max-width:var(--maxw);
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 18px 60px rgba(0,0,0,0.7);
+      background: linear-gradient(180deg, rgba(20,20,22,0.6), rgba(6,6,8,0.75));
+      padding:34px 26px;
+    }
+    .hero .kicker { display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),var(--accent)); font-weight:800; color:#fff; font-size:0.86rem; box-shadow: 0 8px 22px rgba(0,212,255,0.06); }
+    .hero h1 { margin:10px 0 8px; font-size:clamp(28px,5vw,40px); line-height:1.02; font-weight:900; letter-spacing:-0.6px; color: #ecfeff; text-shadow:0 6px 30px rgba(0,212,255,0.04); }
+    .hero p.lead { color:var(--muted); font-size:1rem; max-width:900px; margin:0 auto 18px; }
+    .hero .hero-cta { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
 
-        @keyframes pulse-cta {
-            from {
-                transform: scale(1);
-                box-shadow: 0 0 8px rgba(88, 166, 255, 0.6), 0 0 16px rgba(88, 166, 255, 0.4);
-            }
-            to {
-                transform: scale(1.05);
-                box-shadow: 0 0 15px rgba(88, 166, 255, 0.8), 0 0 30px rgba(88, 166, 255, 0.6);
-            }
-        }
+    .btn {
+      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:0;font-weight:800;cursor:pointer;
+      transition:transform .18s, box-shadow .18s;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent)); color:#fff; box-shadow: 0 10px 30px rgba(0,212,255,0.12);
+    }
+    .btn.alt { background:transparent;border:1px solid rgba(255,255,255,0.06); color:#dfefff; box-shadow:none; }
 
-        /*
-        ========================================
-        5. QUICK CALL (Yêu cầu 3)
-        ========================================
-        */
-        #quick-call {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #e30404; /* Màu đỏ nổi bật */
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            text-align: center;
-            font-weight: bold;
-            /* Giữ style hiện tại (phát sáng, lấp lánh khi ở dark background) */
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
-            animation: glow-call 1.5s infinite alternate, sparkle 0.5s infinite;
-        }
+    /* Zalo quick group buttons */
+    .zalo-grid { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:18px 0; }
+    .zalo-btn {
+      display:inline-flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:linear-gradient(180deg, rgba(0,212,255,0.08), rgba(0,122,255,0.04));
+      border:1px solid rgba(0,212,255,0.06); color:#dff9ff; font-weight:700; text-decoration:none;
+      box-shadow: 0 10px 28px rgba(0,212,255,0.04);
+    }
+    .zalo-btn i { font-size:1.05rem; color:var(--accent-2) }
 
-        @keyframes glow-call {
-            from {
-                transform: scale(1);
-                box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6);
-            }
-            to {
-                transform: scale(1.05);
-                box-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 40px rgba(255, 0, 0, 0.8);
-            }
-        }
+    /* Groups grid */
+    .groups { margin:26px auto 60px; max-width:var(--maxw); }
+    .groups-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px;
+    }
+    .group-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--glass-border);
+      padding:18px;border-radius:12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
+      min-height:84px;
+    }
+    .group-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(0,212,255,0.06); border-color: rgba(0,212,255,0.14) }
+    .group-card h2 { margin:0 0 8px; font-size:1.05rem; color:#e9fbff; font-weight:800; letter-spacing:-0.2px; }
+    .group-card p.desc { margin:0; color:var(--muted); font-size:0.92rem; }
+    .group-card a.link { margin-top:10px; display:inline-block; font-weight:800; color:var(--accent); }
 
-        /*
-        ========================================
-        6. CÁC NÚT LINK KHÁC (Yêu cầu 4)
-        ========================================
-        */
-        .btn-link, .quick-link a {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--color-text-default);
-            border-radius: 4px;
-            color: var(--color-text-default);
-            font-weight: 500;
-            background-color: transparent;
-            /* Nút trong hero, footer, quick links đều là chữ trắng hoặc sáng trên nền tối */
-        }
+    /* Reveal animation */
+    .reveal { opacity:0; transform: translateY(10px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.9,.2,1); will-change:opacity,transform; }
+    .reveal.visible { opacity:1; transform: none; }
 
-        .btn-link:hover, .quick-link a:hover {
-            /* hover có hiệu ứng sáng (rgba(255,255,255,0.12)) */
-            background-color: var(--color-link-hover-bg);
-            border-color: var(--color-primary);
-            color: white;
-        }
+    /* Footer */
+    footer {
+      padding:28px 20px 64px; text-align:center; color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.02); margin-top:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    .footer a { color:var(--accent); font-weight:700; }
 
-        /*
-        ========================================
-        7. CÁC PHẦN NỘI DUNG KHÁC (Yêu cầu 5)
-        ========================================
-        */
-        #hero {
-            padding-top: 150px;
-            padding-bottom: 100px;
-            text-align: center;
-            background-color: #161b22; /* Nền tối đậm hơn cho Hero */
-        }
+    /* Quick App (radial) */
+    .quick-app {
+      position:fixed; bottom:22px; right:22px; z-index:2300;
+      width:64px; height:64px;
+    }
+    .quick-main {
+      width:64px;height:64px;border-radius:50%;border:0;cursor:pointer;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.35rem;
+      box-shadow:0 0 24px rgba(0,212,255,0.18);
+      animation: pulse 1.6s infinite alternate;
+    }
+    .quick-sub { position:absolute; right:0; bottom:0; pointer-events:none; }
+    .quick-sub a {
+      position:absolute; width:48px;height:48px;border-radius:50%; display:flex;align-items:center;justify-content:center;
+      background:rgba(10,10,12,0.9); color:var(--accent); font-size:1.1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      transform: scale(0); transition: transform .4s, box-shadow .3s; pointer-events:auto;
+    }
+    .quick-app.open .quick-sub a { transform: scale(1); }
+    .quick-sub a:hover { box-shadow: 0 0 20px rgba(0,212,255,0.18); transform: scale(1.12) }
 
-        #content {
-            padding: 50px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* radial positions */
+    .quick-app.open .quick-sub a.q1 { transform: translate(-88px, 0) scale(1); }
+    .quick-app.open .quick-sub a.q2 { transform: translate(-64px, -64px) scale(1); }
+    .quick-app.open .quick-sub a.q3 { transform: translate(0, -88px) scale(1); }
+    .quick-app.open .quick-sub a.q4 { transform: translate(64px, -64px) scale(1); }
 
-        .footer-premium {
-            background-color: #010409; /* Nền đen tuyệt đối cho Footer Premium */
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid #30363d;
-        }
+    /* responsive tweaks */
+    @media (max-width:900px){
+      .topbar{ left:12px; transform:none; width:calc(100% - 24px); border-radius:10px; }
+      .hero{ margin-top:90px; padding:22px; }
+    }
+    @media (max-width:520px){
+      .worktime .support{ display:none; }
+      .brand img{ width:38px; height:38px; }
+      .drawer{ width:86%; max-width:320px; padding:84px 18px 22px; }
+      .groups-grid{ grid-template-columns: repeat(1, 1fr); }
+    }
 
-        .quick-links {
-            padding: 20px 20px;
-            text-align: center;
-        }
-
-        /* Thêm style cho Drawer */
-        #drawer {
-            position: fixed;
-            top: 0;
-            right: -300px; /* Ban đầu ẩn */
-            width: 300px;
-            height: 100%;
-            background-color: #0d1117;
-            border-left: 1px solid #30363d;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            transition: right 0.3s ease-out;
-            padding-top: 60px;
-        }
-
-        #drawer.open {
-            right: 0;
-        }
-
-        .drawer-toggle-btn {
-            display: none; /* Hiển thị trên mobile */
-        }
-    </style>
+  </style>
 </head>
 <body>
-    <header id="topbar">
-        <div class="logo">
-            <a href="#">LOGO</a>
-        </div>
-        <nav class="nav-links">
-            <a href="#">Giới Thiệu</a>
-            <a href="#">Dịch Vụ</a>
-            <a href="#">Sản Phẩm</a>
-            <a href="#">Liên Hệ</a>
-            <a href="#" class="btn-cta-menu">ĐĂNG KÝ NGAY</a>
-        </nav>
-        <button class="drawer-toggle-btn">Menu</button>
-    </header>
+  <!-- Topbar -->
+  <header class="topbar" id="topbar" role="banner" aria-label="Trang điều hướng">
+    <div class="brand">
+      <img src="https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png" alt="Motoopen logo">
+    </div>
 
-    <section id="hero">
-        <h1>Tiêu Đề Lớn Cố Định Nền Tối</h1>
-        <p>Đây là nội dung Hero, giữ nguyên style ban đầu (chữ sáng trên nền tối).</p>
-        <br>
-        <a href="#" class="btn-link">Khám Phá</a>
+    <div class="worktime" aria-hidden="false">
+      <div class="hours">🕘 9h – 21h</div>
+      <div class="support">💬 Zalo hỗ trợ 24/7</div>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Mở menu" aria-expanded="false" aria-controls="drawer">
+      <div class="bars"><span></span><span></span><span></span></div>
+    </button>
+  </header>
+
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+
+  <aside class="drawer" id="drawer" role="navigation" aria-hidden="true">
+    <button class="drawer-close" id="drawerClose" aria-label="Đóng menu"><i class="fa-solid fa-xmark"></i></button>
+    <a class="link" href="https://motoopen.github.io/appthuexemay/"><i class="fa-solid fa-house"></i> Trang chủ</a>
+    <a class="link" href="https://motoopen.github.io/appthuexemay/lienhe.html"><i class="fa-solid fa-phone"></i> Liên hệ</a>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:14px 0 8px">
+    <p style="color:var(--muted);font-size:0.92rem;margin:6px 0 12px;">Các liên kết nhanh:</p>
+    <a class="link" href="https://motoopen.github.io/appthuexemay/banggia.html"><i class="fa-solid fa-tags"></i> Bảng giá</a>
+    <a class="link" href="https://motoopen.github.io/chothuexemayhanoi/"><i class="fa-solid fa-globe"></i> Mini site chính</a>
+  </aside>
+
+  <main id="main" class="container" role="main">
+    <!-- HERO -->
+    <section class="hero reveal" aria-labelledby="hero-title">
+      <div class="kicker">Tổng hợp &amp; Cộng đồng</div>
+      <h1 id="hero-title">Tổng hợp app, nhóm cho thuê xe máy Hà Nội</h1>
+      <p class="lead">Danh sách nhóm và cộng đồng cho thuê xe máy uy tín tại Hà Nội — giao tận nơi, thủ tục nhanh, cọc nhẹ. Bấm vào nhóm để tham gia, hoặc liên hệ qua Zalo/Hotline để được hỗ trợ ngay.</p>
+
+      <div class="hero-cta">
+        <a class="btn" href="https://motoopen.github.io/appthuexemay/lienhe.html"><i class="fa-solid fa-phone"></i> Liên hệ ngay</a>
+        <a class="btn alt" href="https://motoopen.github.io/chothuexemayhanoi/"><i class="fa-solid fa-globe"></i> Mini site chính</a>
+      </div>
+
+      <!-- 5 Zalo quick group buttons -->
+      <div class="zalo-grid reveal" style="margin-top:18px;">
+        <a class="zalo-btn" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-rocketchat"></i> Cho thuê xe máy giao tận nơi Hà Nội
+        </a>
+        <a class="zalo-btn" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-rocketchat"></i> Cho thuê xe máy Hà Nội cọc nhẹ
+        </a>
+        <a class="zalo-btn" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-rocketchat"></i> Cho thuê xe máy phố cổ
+        </a>
+        <a class="zalo-btn" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-rocketchat"></i> Cho thuê xe máy gần bến xe Gia Lâm Long Biên
+        </a>
+        <a class="zalo-btn" href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-rocketchat"></i> Cho thuê xe máy Hoàn Kiếm
+        </a>
+      </div>
     </section>
 
-    <main id="content">
-        <h2>Nội Dung Trang Index</h2>
-        <p>Toàn bộ nội dung khác được giữ nguyên và nằm trên nền tối của site (Yêu cầu 5).</p>
-        <p>...</p>
-        <p>Cuộn xuống để xem hiệu ứng Topbar và Footer.</p>
-        <br><br><br><br><br><br><br><br><br><br>
-        <p>...</p>
-    </main>
+    <!-- Groups list -->
+    <section class="groups" aria-labelledby="groups-title">
+      <h2 id="groups-title" style="margin-bottom:12px;color:#dff8ff;">Danh sách nhóm Facebook cho thuê xe máy</h2>
 
-    <section class="quick-links">
-        <h2>Quick Links</h2>
-        <div class="links-group">
-            <a href="#" class="quick-link a">Link Nhanh 1</a>
-            <a href="#" class="quick-link a">Link Nhanh 2</a>
-            <a href="#" class="quick-link a">Link Nhanh 3</a>
-        </div>
+      <div class="groups-grid">
+        <article class="group-card reveal">
+          <h2>Thuê xe máy Hà Nội giao tận nơi</h2>
+          <p class="desc">Tham gia nhóm để tìm thuê xe giao tận nơi tại Hà Nội.</p>
+          <a class="link" href="https://www.facebook.com/groups/1904026019805651/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy thủ tục Hà Nội cọc nhẹ</h2>
+          <p class="desc">Nhóm chia sẻ thủ tục, kinh nghiệm thuê kèm chính sách cọc nhẹ.</p>
+          <a class="link" href="https://www.facebook.com/groups/5544453349009936/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy - xe điện Hà Nội</h2>
+          <p class="desc">Nhóm chuyên xe điện và các lựa chọn tiết kiệm cho nội đô Hà Nội.</p>
+          <a class="link" href="https://www.facebook.com/groups/thuexemayhanoikococ/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy bến xe Gia Lâm - Hà Nội</h2>
+          <p class="desc">Nhóm cho thuê xe khu vực Gia Lâm, thuận tiện cho bến xe và quanh Long Biên.</p>
+          <a class="link" href="https://www.facebook.com/groups/728018152788018/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy tháng Hà Nội giá rẻ, uy tín</h2>
+          <p class="desc">Lựa chọn thuê theo tháng với chi phí ưu đãi và bảo dưỡng định kỳ.</p>
+          <a class="link" href="https://www.facebook.com/groups/723449641393835/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy theo ngày Hà Nội</h2>
+          <p class="desc">Tổng hợp các tùy chọn thuê theo ngày cho khách du lịch và công tác.</p>
+          <a class="link" href="https://www.facebook.com/groups/1050032987071626/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Địa chỉ cho thuê xe máy Hà Nội</h2>
+          <p class="desc">Danh sách địa chỉ cho thuê, review và đánh giá.</p>
+          <a class="link" href="https://www.facebook.com/groups/chothuexemayhanoi/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Long Biên - Hà Nội</h2>
+          <p class="desc">Nhóm hoạt động chủ yếu tại Long Biên và các khu vực lân cận.</p>
+          <a class="link" href="https://www.facebook.com/groups/368347436866294/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Tây Hồ Hà Nội</h2>
+          <p class="desc">Thuê xe khu vực Tây Hồ, gợi ý địa điểm giao nhận và giá tham khảo.</p>
+          <a class="link" href="https://www.facebook.com/groups/417081694209275/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Đống Đa Hà Nội</h2>
+          <p class="desc">Dịch vụ thuê xe, giao nhận trong quận Đống Đa.</p>
+          <a class="link" href="https://www.facebook.com/groups/811601901137517/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy 50cc tại Hà Nội</h2>
+          <p class="desc">Nhóm dành cho xe 50cc — phù hợp học sinh, sinh viên, không cần bằng lái.</p>
+          <a class="link" href="https://www.facebook.com/groups/317537062180083/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe ga Honda Vision, Air Blade Hà Nội</h2>
+          <p class="desc">Tổng hợp dòng xe ga phổ biến: Vision, Air Blade và các ưu/nhược điểm.</p>
+          <a class="link" href="https://www.facebook.com/groups/1645220022445616/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Hoàn Kiếm Hà Nội</h2>
+          <p class="desc">Nhóm cho thuê xe quanh khu phố cổ & Hoàn Kiếm, tiện cho khách du lịch.</p>
+          <a class="link" href="https://www.facebook.com/groups/1540449669895942/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Dịch vụ cho thuê xe máy Hà Nội</h2>
+          <p class="desc">Các dịch vụ bổ trợ: giao nhận, bảo hiểm tạm, phụ kiện kèm theo.</p>
+          <a class="link" href="https://www.facebook.com/groups/2047721645248789/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Long Biên - Gần Vinhome Ocean Park</h2>
+          <p class="desc">Dành cho cư dân và khách tại khu vực Vinhome Ocean Park.</p>
+          <a class="link" href="https://www.facebook.com/groups/1497137471165118/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Ba Đình Hà Nội</h2>
+          <p class="desc">Dịch vụ thuê xe tại Ba Đình, giao nhận nhanh.</p>
+          <a class="link" href="https://www.facebook.com/groups/1008548894103384/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy gần bến xe Gia Lâm, Long Biên</h2>
+          <p class="desc">Nhóm phục vụ khách đến/đi bến xe Gia Lâm và khu vực Long Biên.</p>
+          <a class="link" href="https://www.facebook.com/groups/1040645287566957/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy sân bay Nội Bài</h2>
+          <p class="desc">Dịch vụ giao nhận sân bay Nội Bài — tiện cho khách du lịch.</p>
+          <a class="link" href="https://www.facebook.com/groups/2112630822467916/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Hai Bà Trưng Hà Nội</h2>
+          <p class="desc">Tổng hợp nhà cho thuê xe tại quận Hai Bà Trưng.</p>
+          <a class="link" href="https://www.facebook.com/groups/1041574087677770/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy quận Hoàng Mai Hà Nội</h2>
+          <p class="desc">Dịch vụ tại Hoàng Mai, cập nhật giá và ưu đãi.</p>
+          <a class="link" href="https://www.facebook.com/groups/1883444482139164/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy giá rẻ Hà Nội</h2>
+          <p class="desc">Các lựa chọn giá rẻ, phù hợp ngân sách tiết kiệm.</p>
+          <a class="link" href="https://www.facebook.com/groups/773976907996033/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy quận Cầu Giấy</h2>
+          <p class="desc">Cho thuê xe quanh khu Cầu Giấy — giao nhận tận nơi.</p>
+          <a class="link" href="https://www.facebook.com/groups/1049088413281085/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Hà Đông</h2>
+          <p class="desc">Dịch vụ tại Hà Đông và khu vực lân cận.</p>
+          <a class="link" href="https://www.facebook.com/groups/897567135520752/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Phố Cổ Hà Nội</h2>
+          <p class="desc">Thuê xe để tham quan Phố Cổ — gợi ý giao nhận khu vực Hoàn Kiếm.</p>
+          <a class="link" href="https://www.facebook.com/groups/813250640791266/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy Thanh Xuân, Hà Nội</h2>
+          <p class="desc">Dịch vụ và liên hệ cho khu vực Thanh Xuân.</p>
+          <a class="link" href="https://www.facebook.com/groups/515845390834826/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+
+        <article class="group-card reveal">
+          <h2>Cho thuê xe máy khu vực Mỹ Đình</h2>
+          <p class="desc">Thuê xe quanh khu Mỹ Đình, giao nhận gần sân vận động, nhà ga.</p>
+          <a class="link" href="https://www.facebook.com/groups/474763548759138/" target="_blank" rel="noopener">Mở nhóm →</a>
+        </article>
+      </div>
     </section>
+  </main>
 
-    <footer class="footer-premium">
-        <h2>Footer Premium</h2>
-        <p>&copy; 2025 Website Nền Tối. Giữ nguyên style.</p>
-        <a href="#" class="btn-link">Đóng Góp</a>
-    </footer>
+  <!-- Quick App Radial -->
+  <div class="quick-app" id="quickApp" aria-hidden="false">
+    <button class="quick-main" id="quickMain" aria-label="Mở menu gọi nhanh"><i class="fa-solid fa-heart"></i></button>
+    <div class="quick-sub" aria-hidden="true">
+      <a class="q1" href="tel:0857255868" title="Gọi ngay"><i class="fa-solid fa-phone"></i></a>
+      <a class="q2" href="https://zalo.me/0857255868" target="_blank" rel="noopener" title="Chat Zalo"><i class="fa-brands fa-rocketchat"></i></a>
+      <a class="q3" href="https://motoopen.github.io/appthuexemay/banggia.pdf" target="_blank" rel="noopener" title="Tải bảng giá"><i class="fa-solid fa-file-pdf"></i></a>
+      <a class="q4" href="https://motoopen.github.io/appthuexemay/lienhe.html" title="Liên hệ"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
 
-    <a href="tel:123456789" id="quick-call">
-        ☎️<br>GỌI NGAY
-    </a>
+  <!-- Footer -->
+  <footer>
+    <p style="margin:0 0 8px;">© 2025 <a href="https://motoopen.github.io/chothuexemayhanoi/" rel="noopener">@Motoopen</a> – Tổng hợp app, nhóm cho thuê xe máy.</p>
+    <p style="margin:6px 0 0;color:var(--muted);font-size:0.88rem;">Địa phương: Long Biên, Gia Lâm, Phố Cổ, Hoàn Kiếm và các quận nội thành Hà Nội.</p>
+  </footer>
 
-    <div id="drawer">
-        </div>
+  <!-- Audio -->
+  <audio id="bling-open" preload="auto">
+    <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" type="audio/ogg">
+    <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="bling-close" preload="auto">
+    <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_clicks.ogg" type="audio/ogg">
+    <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_clicks.mp3" type="audio/mpeg">
+  </audio>
 
-    <script>
-        // 1. XÓA logic toggle dark mode trong JS.
-        document.addEventListener('DOMContentLoaded', () => {
-            const topbar = document.getElementById('topbar');
-            
-            // 2. Logic Topbar khi scroll (Yêu cầu 2)
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    topbar.classList.add('scrolled');
-                } else {
-                    topbar.classList.remove('scrolled');
-                }
-            });
+  <script>
+    // Drawer toggle
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerClose = document.getElementById('drawerClose');
+    const blingOpen = document.getElementById('bling-open');
+    const blingClose = document.getElementById('bling-close');
 
-            // 5. Giữ nguyên logic Drawer (nếu có)
-            const drawerToggleBtn = document.querySelector('.drawer-toggle-btn');
-            const drawer = document.getElementById('drawer');
+    function openDrawer(){
+      hamburger.classList.add('active');
+      drawer.classList.add('open');
+      drawerOverlay.classList.add('active');
+      drawer.setAttribute('aria-hidden','false');
+      hamburger.setAttribute('aria-expanded','true');
+      try{ blingOpen.currentTime=0; blingOpen.play(); }catch(e){}
+    }
+    function closeDrawer(){
+      hamburger.classList.remove('active');
+      drawer.classList.remove('open');
+      drawerOverlay.classList.remove('active');
+      drawer.setAttribute('aria-hidden','true');
+      hamburger.setAttribute('aria-expanded','false');
+      try{ blingClose.currentTime=0; blingClose.play(); }catch(e){}
+    }
 
-            if (drawerToggleBtn && drawer) {
-                drawerToggleBtn.addEventListener('click', () => {
-                    drawer.classList.toggle('open');
-                });
-            }
-        });
-    </script>
+    hamburger.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      if(drawer.classList.contains('open')) closeDrawer(); else openDrawer();
+    });
+    drawerOverlay.addEventListener('click', closeDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+
+    // Quick app radial
+    const quickApp = document.getElementById('quickApp');
+    const quickMain = document.getElementById('quickMain');
+    quickMain.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      quickApp.classList.toggle('open');
+      if(quickApp.classList.contains('open')) {
+        try{ blingOpen.currentTime=0; blingOpen.play(); }catch(e){}
+      } else {
+        try{ blingClose.currentTime=0; blingClose.play(); }catch(e){}
+      }
+    });
+    document.addEventListener('click', (e)=>{
+      if(!quickApp.contains(e.target)) quickApp.classList.remove('open');
+    });
+
+    // IntersectionObserver reveal (scroll reveal)
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      // Stagger via CSS transition delay
+      el.style.transitionDelay = (i * 0.06) + 's';
+      revealObserver.observe(el);
+    });
+
+    // Accessibility: ESC closes drawer and quickApp
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        closeDrawer();
+        quickApp.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
