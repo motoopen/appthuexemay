@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Website Cố Định Nền Tối</title>
+    <style>
+        /*
+        ========================================
+        1. RESET & BIẾN CSS (CSS Variables)
+        ========================================
+        */
+        :root {
+            --color-bg-default: #0d1117; /* Nền tối chung cho toàn site */
+            --color-text-default: #c9d1d9; /* Chữ sáng chung */
+            --color-primary: #58a6ff; /* Màu xanh dương chủ đạo */
+            --color-link-hover-bg: rgba(255, 255, 255, 0.12); /* Hiệu ứng hover cho nút/link */
+
+            /* Topbar Colors */
+            --color-topbar-bg-initial: rgba(13, 17, 23, 0.85); /* Nền glassmorphism ban đầu */
+            --color-topbar-bg-scrolled: rgba(13, 17, 23, 0.95); /* Nền khi cuộn */
+            --color-topbar-text: #ffffff;
+        }
+
+        /*
+        ========================================
+        2. CÁC THAY ĐỔI CHUNG (Global Styles)
+        ========================================
+        */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+        }
+
+        body {
+            /* 1. XÓA class "dark" -> Đã mặc định nền tối */
+            font-family: sans-serif;
+            background-color: var(--color-bg-default);
+            color: var(--color-text-default);
+            min-height: 200vh; /* Để có thể scroll */
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-text-default);
+        }
+
+        /*
+        ========================================
+        3. TOPBAR / MENU (Yêu cầu 2)
+        ========================================
+        */
+        #topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            /* Topbar nền đen glassmorphism (rgba(13,17,23,0.85), backdrop-filter: blur, bóng mờ) */
+            background-color: var(--color-topbar-bg-initial);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        #topbar.scrolled {
+            /* Khi scroll thì topbar đậm hơn (rgba(13,17,23,0.95)) */
+            background-color: var(--color-topbar-bg-scrolled);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-topbar-text);
+        }
+
+        .nav-links a {
+            /* Chữ menu màu trắng */
+            color: var(--color-topbar-text);
+            margin-left: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            /* hover xanh (#58a6ff) */
+            color: var(--color-primary);
+        }
+
+        /*
+        ========================================
+        4. NÚT CTA (Yêu cầu 3)
+        ========================================
+        */
+        .btn-cta-menu {
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            /* Giữ hiệu ứng sáng neon */
+            background-image: linear-gradient(45deg, #2f81f7, #58a6ff);
+            color: white;
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.6), 0 0 20px rgba(88, 166, 255, 0.4);
+            animation: pulse-cta 1.5s infinite alternate;
+            margin-left: 1rem;
+        }
+
+        @keyframes pulse-cta {
+            from {
+                transform: scale(1);
+                box-shadow: 0 0 8px rgba(88, 166, 255, 0.6), 0 0 16px rgba(88, 166, 255, 0.4);
+            }
+            to {
+                transform: scale(1.05);
+                box-shadow: 0 0 15px rgba(88, 166, 255, 0.8), 0 0 30px rgba(88, 166, 255, 0.6);
+            }
+        }
+
+        /*
+        ========================================
+        5. QUICK CALL (Yêu cầu 3)
+        ========================================
+        */
+        #quick-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #e30404; /* Màu đỏ nổi bật */
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            text-align: center;
+            font-weight: bold;
+            /* Giữ style hiện tại (phát sáng, lấp lánh khi ở dark background) */
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
+            animation: glow-call 1.5s infinite alternate, sparkle 0.5s infinite;
+        }
+
+        @keyframes glow-call {
+            from {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6);
+            }
+            to {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 40px rgba(255, 0, 0, 0.8);
+            }
+        }
+
+        /*
+        ========================================
+        6. CÁC NÚT LINK KHÁC (Yêu cầu 4)
+        ========================================
+        */
+        .btn-link, .quick-link a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--color-text-default);
+            border-radius: 4px;
+            color: var(--color-text-default);
+            font-weight: 500;
+            background-color: transparent;
+            /* Nút trong hero, footer, quick links đều là chữ trắng hoặc sáng trên nền tối */
+        }
+
+        .btn-link:hover, .quick-link a:hover {
+            /* hover có hiệu ứng sáng (rgba(255,255,255,0.12)) */
+            background-color: var(--color-link-hover-bg);
+            border-color: var(--color-primary);
+            color: white;
+        }
+
+        /*
+        ========================================
+        7. CÁC PHẦN NỘI DUNG KHÁC (Yêu cầu 5)
+        ========================================
+        */
+        #hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            text-align: center;
+            background-color: #161b22; /* Nền tối đậm hơn cho Hero */
+        }
+
+        #content {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-premium {
+            background-color: #010409; /* Nền đen tuyệt đối cho Footer Premium */
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #30363d;
+        }
+
+        .quick-links {
+            padding: 20px 20px;
+            text-align: center;
+        }
+
+        /* Thêm style cho Drawer */
+        #drawer {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Ban đầu ẩn */
+            width: 300px;
+            height: 100%;
+            background-color: #0d1117;
+            border-left: 1px solid #30363d;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            transition: right 0.3s ease-out;
+            padding-top: 60px;
+        }
+
+        #drawer.open {
+            right: 0;
+        }
+
+        .drawer-toggle-btn {
+            display: none; /* Hiển thị trên mobile */
+        }
+    </style>
+</head>
+<body>
+    <header id="topbar">
+        <div class="logo">
+            <a href="#">LOGO</a>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Giới Thiệu</a>
+            <a href="#">Dịch Vụ</a>
+            <a href="#">Sản Phẩm</a>
+            <a href="#">Liên Hệ</a>
+            <a href="#" class="btn-cta-menu">ĐĂNG KÝ NGAY</a>
+        </nav>
+        <button class="drawer-toggle-btn">Menu</button>
+    </header>
+
+    <section id="hero">
+        <h1>Tiêu Đề Lớn Cố Định Nền Tối</h1>
+        <p>Đây là nội dung Hero, giữ nguyên style ban đầu (chữ sáng trên nền tối).</p>
+        <br>
+        <a href="#" class="btn-link">Khám Phá</a>
+    </section>
+
+    <main id="content">
+        <h2>Nội Dung Trang Index</h2>
+        <p>Toàn bộ nội dung khác được giữ nguyên và nằm trên nền tối của site (Yêu cầu 5).</p>
+        <p>...</p>
+        <p>Cuộn xuống để xem hiệu ứng Topbar và Footer.</p>
+        <br><br><br><br><br><br><br><br><br><br>
+        <p>...</p>
+    </main>
+
+    <section class="quick-links">
+        <h2>Quick Links</h2>
+        <div class="links-group">
+            <a href="#" class="quick-link a">Link Nhanh 1</a>
+            <a href="#" class="quick-link a">Link Nhanh 2</a>
+            <a href="#" class="quick-link a">Link Nhanh 3</a>
+        </div>
+    </section>
+
+    <footer class="footer-premium">
+        <h2>Footer Premium</h2>
+        <p>&copy; 2025 Website Nền Tối. Giữ nguyên style.</p>
+        <a href="#" class="btn-link">Đóng Góp</a>
+    </footer>
+
+    <a href="tel:123456789" id="quick-call">
+        ☎️<br>GỌI NGAY
+    </a>
+
+    <div id="drawer">
+        </div>
+
+    <script>
+        // 1. XÓA logic toggle dark mode trong JS.
+        document.addEventListener('DOMContentLoaded', () => {
+            const topbar = document.getElementById('topbar');
+            
+            // 2. Logic Topbar khi scroll (Yêu cầu 2)
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    topbar.classList.add('scrolled');
+                } else {
+                    topbar.classList.remove('scrolled');
+                }
+            });
+
+            // 5. Giữ nguyên logic Drawer (nếu có)
+            const drawerToggleBtn = document.querySelector('.drawer-toggle-btn');
+            const drawer = document.getElementById('drawer');
+
+            if (drawerToggleBtn && drawer) {
+                drawerToggleBtn.addEventListener('click', () => {
+                    drawer.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
