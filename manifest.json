@@ -1,0 +1,35 @@
+{
+  "name": "Motoopen - Cho thuê xe máy Hà Nội",
+  "short_name": "Motoopen",
+  "description": "Cho thuê xe máy Hà Nội uy tín - Giao tận nơi, cọc nhẹ, hỗ trợ Zalo 24/7.",
+  "start_url": "/appthuexemay/index.html",
+  "scope": "/appthuexemay/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#ffcc00",
+  "background_color": "#ffffff",
+  "lang": "vi",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5213.jpeg",
+      "sizes": "180x180",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/motoopen/appthuexemay/refs/heads/main/IMG_5360.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "transportation", "rental", "localservice"],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://motoopen.github.io/appthuexemay/"
+    }
+  ],
+  "prefer_related_applications": false
+}
