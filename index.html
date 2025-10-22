@@ -831,5 +831,176 @@
       }, 2400);
     });
   </script>
+
+  <!-- ========== MOTOOPEN MINI TOC APP v2.0 (SEO + UX) ========== -->
+  <div id="toc-mini-btn" title="Xem mục lục bài viết">
+    <i class="fa-solid fa-list-ul"></i>
+  </div>
+
+  <nav id="toc-mini-panel" aria-label="Mục lục bài viết">
+    <header class="toc-header">
+      <h3><i class="fa-solid fa-book"></i> Mục lục</h3>
+      <button id="toc-close"><i class="fa-solid fa-xmark"></i></button>
+    </header>
+    <div id="toc-list"></div>
+  </nav>
+
+  <style>
+    #toc-mini-btn {
+      position: fixed;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, #007aff, #00d4ff);
+      color: #fff;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 0 14px rgba(0, 212, 255, 0.3);
+      transition: all 0.3s;
+      z-index: 2600;
+    }
+    #toc-mini-btn:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    }
+
+    #toc-mini-panel {
+      position: fixed;
+      top: 0;
+      left: -320px;
+      width: 300px;
+      height: 100vh;
+      background: rgba(6, 8, 10, 0.96);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid rgba(0, 212, 255, 0.12);
+      box-shadow: 8px 0 30px rgba(0,0,0,0.5);
+      color: #dff9ff;
+      transition: left 0.4s cubic-bezier(.2,.9,.2,1);
+      overflow-y: auto;
+      z-index: 2599;
+    }
+    #toc-mini-panel.open { left: 0; }
+
+    .toc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .toc-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #00d4ff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+    }
+    .toc-header button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    #toc-list {
+      padding: 18px 20px 40px;
+    }
+    #toc-list a {
+      display: block;
+      margin: 6px 0;
+      color: #bfefff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      padding-left: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.25s;
+    }
+    #toc-list a:hover {
+      color: #00d4ff;
+      padding-left: 12px;
+    }
+    #toc-list a.active {
+      border-left: 2px solid #00d4ff;
+      color: #00d4ff;
+    }
+    .toc-h3 { padding-left: 16px; font-size: 0.9rem; color: #9fdfff; }
+
+    @media (max-width: 720px) {
+      #toc-mini-btn { left: 10px; width: 42px; height: 42px; font-size: 1rem; }
+      #toc-mini-panel { width: 240px; }
+    }
+  </style>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const content = document.querySelector('main') || document.body;
+    const tocList = document.getElementById("toc-list");
+    const headers = content.querySelectorAll("h2, h3");
+
+    if (!headers.length || !tocList) return; // Thêm kiểm tra tocList tồn tại
+
+    headers.forEach((h, i) => {
+      const id = h.id || "section-" + (i + 1);
+      h.id = id;
+      const link = document.createElement("a");
+      link.href = "#" + id;
+      link.textContent = h.textContent.trim();
+      link.className = h.tagName.toLowerCase() === "h3" ? "toc-h3" : "toc-h2";
+      tocList.appendChild(link);
+    });
+
+    const links = document.querySelectorAll('#toc-list a');
+    if (!links.length) return; // Thêm kiểm tra links tồn tại
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetElement = document.querySelector(link.getAttribute('href'));
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        document.getElementById("toc-mini-panel").classList.remove("open");
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 120;
+      links.forEach(link => {
+        const section = document.querySelector(link.hash);
+        if (section) { // Kiểm tra section tồn tại
+          if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+            links.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    });
+  });
+
+  const tocBtn = document.getElementById("toc-mini-btn");
+  const tocPanel = document.getElementById("toc-mini-panel");
+  const tocClose = document.getElementById("toc-close");
+
+  if (tocBtn && tocPanel && tocClose) { // Thêm kiểm tra các element tồn tại
+    tocBtn.addEventListener("click", () => tocPanel.classList.toggle("open"));
+    tocClose.addEventListener("click", () => tocPanel.classList.remove("open"));
+    document.addEventListener("click", (e) => {
+      if (!tocPanel.contains(e.target) && !tocBtn.contains(e.target)) {
+        tocPanel.classList.remove("open");
+      }
+    });
+  }
+  </script>
 </body>
 </html>
