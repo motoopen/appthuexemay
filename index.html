@@ -184,8 +184,8 @@
 
     /* Footer styles with fade-in animation */
     .footer-section{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.05);padding:50px 20px 64px;color:#dfefff;}
-    .footer-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:1100px;margin:0 auto;}
-    .footer-col h4{color:#00d4ff;margin-bottom:12px;}
+    .footer-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;max-width:1100px;margin:0 auto;} /* Adjusted minmax for more columns */
+    .footer-col h4{color:#00d4ff;margin-bottom:12px; display:flex; align-items:center; gap: 8px;} /* Added flex for icon alignment */
     .footer-col p{color:#bfbfbf;}
     .footer-col ul{list-style:none;padding:0;margin:0;}
     .footer-col ul li{margin:6px 0;}
@@ -241,6 +241,9 @@
       }
       .footer-col {
         padding-bottom: 20px; /* Thêm khoảng cách giữa các cột khi stack */
+      }
+      .footer-col h4 {
+        justify-content: center; /* Căn giữa H4 và icon của nó trên mobile */
       }
       .footer-col p {
         max-width: 90%; /* Giới hạn độ rộng để text không quá tràn */
@@ -391,10 +394,14 @@
       <h1 id="hero-title">Cho thuê xe máy Hà Nội giá rẻ, giao tận nơi – Motoopen</h1>
       <p class="lead">Tổng hợp các app, nhóm và fanpage cho thuê xe máy Hà Nội uy tín – <b>Motoopen</b>. Dịch vụ chuyên <b>giao xe tận nơi</b> nhanh chóng, <b>thủ tục nhanh</b> gọn, và chính sách <b>cọc nhẹ</b>. Liên hệ qua <a href="https://zalo.me/0857255868" target="_blank" rel="noopener noreferrer">Zalo/Hotline để được hỗ trợ 24/7</a>.</p>
 
+      <!-- ===== CTA UPDATE ===== -->
       <div class="hero-cta">
         <a class="btn" href="https://motoopen.github.io/appthuexemay/lienhe.html"><i class="fa-solid fa-phone"></i> Liên hệ ngay</a>
+        <a class="btn alt" href="https://motoopen.github.io/appthuexemay/banggia.html"><i class="fa-solid fa-tags"></i> Bảng giá</a>
         <a class="btn alt" href="https://motoopen.github.io/chothuexemayhanoi/"><i class="fa-solid fa-globe"></i> Mini site chính</a>
       </div>
+      <!-- ===== END CTA UPDATE ===== -->
+
 
       <div class="zalo-grid reveal">
         <div class="zalo-btn">
@@ -607,6 +614,7 @@
     </section>
   </main>
 
+  <!-- ===== FOOTER UPDATE ===== -->
   <footer class="footer-section reveal">
     <div class="footer-container">
       <div class="footer-col tagline reveal-item">
@@ -626,51 +634,63 @@
         </ul>
       </div>
 
+      <!-- ===== NEW COLUMN ===== -->
+      <div class="footer-col links reveal-item">
+        <h4><i class="fa-solid fa-link"></i> Liên kết</h4>
+        <ul>
+          <li><a href="https://motoopen.github.io/appthuexemay/"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+          <li><a href="https://motoopen.github.io/appthuexemay/banggia.html"><i class="fa-solid fa-tags"></i> Bảng giá</a></li>
+          <li><a href="https://motoopen.github.io/appthuexemay/lienhe.html"><i class="fa-solid fa-address-book"></i> Liên hệ</a></li>
+        </ul>
+      </div>
+      <!-- ===== END NEW COLUMN ===== -->
+
+
       <div class="footer-col groups reveal-item">
         <h4><i class="fa-brands fa-facebook"></i> Nhóm 1</h4>
         <ul>
-          <li><a href="https://www.facebook.com/groups/1904026019805651/" target="_blank">Giao tận nơi</a></li>
-          <li><a href="https://www.facebook.com/groups/5544453349009936/" target="_blank">Cọc nhẹ</a></li>
-          <li><a href="https://www.facebook.com/groups/thuexemayhanoikococ/" target="_blank">Xe điện</a></li>
-          <li><a href="https://www.facebook.com/groups/728018152788018/" target="_blank">Bến xe Gia Lâm</a></li>
-          <li><a href="https://www.facebook.com/groups/723449641393835/" target="_blank">Thuê tháng</a></li>
-          <li><a href="https://www.facebook.com/groups/1050032987071626/" target="_blank">Thuê ngày</a></li>
+          <li><a href="https://www.facebook.com/groups/1904026019805651/" target="_blank"><i class="fa-solid fa-angle-right"></i> Giao tận nơi</a></li>
+          <li><a href="https://www.facebook.com/groups/5544453349009936/" target="_blank"><i class="fa-solid fa-angle-right"></i> Cọc nhẹ</a></li>
+          <li><a href="https://www.facebook.com/groups/thuexemayhanoikococ/" target="_blank"><i class="fa-solid fa-angle-right"></i> Xe điện</a></li>
+          <li><a href="https://www.facebook.com/groups/728018152788018/" target="_blank"><i class="fa-solid fa-angle-right"></i> Bến xe Gia Lâm</a></li>
+          <li><a href="https://www.facebook.com/groups/723449641393835/" target="_blank"><i class="fa-solid fa-angle-right"></i> Thuê tháng</a></li>
+          <li><a href="https://www.facebook.com/groups/1050032987071626/" target="_blank"><i class="fa-solid fa-angle-right"></i> Thuê ngày</a></li>
         </ul>
       </div>
 
       <div class="footer-col groups reveal-item">
         <h4><i class="fa-brands fa-facebook"></i> Nhóm 2</h4>
         <ul>
-          <li><a href="https://www.facebook.com/groups/chothuexemayhanoi/" target="_blank">Địa chỉ</a></li>
-          <li><a href="https://www.facebook.com/groups/368347436866294/" target="_blank">Long Biên</a></li>
-          <li><a href="https://www.facebook.com/groups/417081694209275/" target="_blank">Tây Hồ</a></li>
-          <li><a href="https://www.facebook.com/groups/811601901137517/" target="_blank">Đống Đa</a></li>
-          <li><a href="https://www.facebook.com/groups/317537062180083/" target="_blank">50cc</a></li>
-          <li><a href="https://www.facebook.com/groups/1645220022445616/" target="_blank">Vision & AB</a></li>
+          <li><a href="https://www.facebook.com/groups/chothuexemayhanoi/" target="_blank"><i class="fa-solid fa-angle-right"></i> Địa chỉ</a></li>
+          <li><a href="https://www.facebook.com/groups/368347436866294/" target="_blank"><i class="fa-solid fa-angle-right"></i> Long Biên</a></li>
+          <li><a href="https://www.facebook.com/groups/417081694209275/" target="_blank"><i class="fa-solid fa-angle-right"></i> Tây Hồ</a></li>
+          <li><a href="https://www.facebook.com/groups/811601901137517/" target="_blank"><i class="fa-solid fa-angle-right"></i> Đống Đa</a></li>
+          <li><a href="https://www.facebook.com/groups/317537062180083/" target="_blank"><i class="fa-solid fa-angle-right"></i> 50cc</a></li>
+          <li><a href="https://www.facebook.com/groups/1645220022445616/" target="_blank"><i class="fa-solid fa-angle-right"></i> Vision & AB</a></li>
         </ul>
       </div>
 
       <div class="footer-col groups reveal-item">
         <h4><i class="fa-brands fa-facebook"></i> Nhóm 3</h4>
         <ul>
-          <li><a href="https://www.facebook.com/groups/1540449669895942/" target="_blank">Hoàn Kiếm</a></li>
-          <li><a href="https://www.facebook.com/groups/2047721645248789/" target="_blank">Dịch vụ</a></li>
-          <li><a href="https://www.facebook.com/groups/1497137471165118/" target="_blank">Vinhome</a></li>
-          <li><a href="https://www.facebook.com/groups/1008548894103384/" target="_blank">Ba Đình</a></li>
-          <li><a href="https://www.facebook.com/groups/1040645287566957/" target="_blank">Bến xe Gia Lâm</a></li>
-          <li><a href="https://www.facebook.com/groups/2112630822467916/" target="_blank">Nội Bài</a></li>
+          <li><a href="https://www.facebook.com/groups/1540449669895942/" target="_blank"><i class="fa-solid fa-angle-right"></i> Hoàn Kiếm</a></li>
+          <li><a href="https://www.facebook.com/groups/2047721645248789/" target="_blank"><i class="fa-solid fa-angle-right"></i> Dịch vụ</a></li>
+          <li><a href="https://www.facebook.com/groups/1497137471165118/" target="_blank"><i class="fa-solid fa-angle-right"></i> Vinhome</a></li>
+          <li><a href="https://www.facebook.com/groups/1008548894103384/" target="_blank"><i class="fa-solid fa-angle-right"></i> Ba Đình</a></li>
+          <li><a href="https://www.facebook.com/groups/1040645287566957/" target="_blank"><i class="fa-solid fa-angle-right"></i> Bến xe Gia Lâm</a></li>
+          <li><a href="https://www.facebook.com/groups/2112630822467916/" target="_blank"><i class="fa-solid fa-angle-right"></i> Nội Bài</a></li>
         </ul>
       </div>
 
       <div class="footer-col groups reveal-item">
         <h4><i class="fa-brands fa-facebook"></i> Nhóm 4</h4>
         <ul>
-          <li><a href="https://www.facebook.com/groups/1041574087677770/" target="_blank">Hai Bà Trưng</a></li>
-          <li><a href="https://www.facebook.com/groups/1883444482139164/" target="_blank">Hoàng Mai</a></li>
-          <li><a href="https://www.facebook.com/groups/773976907996033/" target="_blank">Giá rẻ</a></li>
-          <li><a href="https://www.facebook.com/groups/1049088413281085/" target="_blank">Cầu Giấy</a></li>
-          <li><a href="https://www.facebook.com/groups/897567135520752/" target="_blank">Hà Đông</a></li>
-          <li><a href="https://www.facebook.com/groups/474763548759138/" target="_blank">Mỹ Đình</a></li>
+          <li><a href="https://www.facebook.com/groups/1041574087677770/" target="_blank"><i class="fa-solid fa-angle-right"></i> Hai Bà Trưng</a></li>
+          <li><a href="https://www.facebook.com/groups/1883444482139164/" target="_blank"><i class="fa-solid fa-angle-right"></i> Hoàng Mai</a></li>
+          <li><a href="https://www.facebook.com/groups/773976907996033/" target="_blank"><i class="fa-solid fa-angle-right"></i> Giá rẻ</a></li>
+          <li><a href="https://www.facebook.com/groups/1049088413281085/" target="_blank"><i class="fa-solid fa-angle-right"></i> Cầu Giấy</a></li>
+          <li><a href="https://www.facebook.com/groups/897567135520752/" target="_blank"><i class="fa-solid fa-angle-right"></i> Hà Đông</a></li>
+          <li><a href="https://www.facebook.com/groups/474763548759138/" target="_blank"><i class="fa-solid fa-angle-right"></i> Mỹ Đình</a></li>
         </ul>
       </div>
     </div>
@@ -679,6 +699,8 @@
       <p>© 2025 <a href="https://motoopen.github.io/chothuexemayhanoi/" rel="noopener">@Motoopen</a> – Hệ thống liên kết cho thuê xe máy Hà Nội.</p>
     </div>
   </footer>
+  <!-- ===== END FOOTER UPDATE ===== -->
+
 
   <button id="backTop" class="back-top" title="Lên đầu trang"><i class="fa-solid fa-arrow-up"></i></button>
 
