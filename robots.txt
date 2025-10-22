@@ -1,0 +1,53 @@
+# ================================
+# 🤖 robots.txt for Motoopen
+# ================================
+# Website: https://motoopen.github.io/appthuexemay/
+# Purpose: Allow all crawlers, index full content
+# Author: Motoopen SEO
+# Date: 2025-10-22
+# ================================
+
+User-agent: *
+Allow: /
+
+# === Important Files ===
+Sitemap: https://motoopen.github.io/appthuexemay/sitemap.xml
+Host: https://motoopen.github.io/appthuexemay/
+
+# === Additional guidance for major bots ===
+User-agent: Googlebot
+Disallow: /private/
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# === Social media bots (Facebook, Twitter, etc.) ===
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# === Block unnecessary crawler spam ===
+User-agent: MJ12bot
+Disallow: /
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: dotbot
+Disallow: /
+
+# === Notes ===
+# - This site uses static HTML hosted on GitHub Pages
+# - Sitemap includes all Facebook group URLs and internal pages
+# - Manifest + schema linked for PWA and SEO enhancement
+
+# === End of robots.txt ===
