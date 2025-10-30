@@ -1,0 +1,214 @@
+### 🧩 CẤU HÌNH NHANH (chỉ cần sửa tại đây)
+
+CONFIG={
+  TITLE:"Dịch vụ thuê xe máy Hoàn Kiếm – Nguyễn Tú",
+  DOMAIN:"https://motoopen.github.io/thuexemayohoankiem",
+  PHONE:"0942467674",
+  ZALO:"https://zalo.me/0942467674",
+  EMAIL:"contact@example.com",
+  ADDRESS:"112 Nguyễn Văn Cừ, Long Biên, Hà Nội",
+  LOGO_URL:"https://thuexemaynguyentu.com/wp-content/uploads/2025/09/cropped-Thue-xe-may-min-1-1.png",
+  MAIN_COLOR:"#0A84FF"
+};
+
+---
+
+### 🚀 SINH FILE HTML
+
+Bạn là trình tạo HTML one-file.  
+Sinh **1 file index.html** (HTML + CSS + JS nội tuyến, không dùng jQuery, Bootstrap, API ngoài).  
+Font: Inter, Material Symbols Rounded, Font Awesome 6 Free.  
+Toàn bộ JS bọc trong 1 IIFE defer cuối body (sau script MotoAI v36).  
+Văn bản tiếng Việt tự nhiên, không chứa “ạ”, “nhé”, “nha”.  
+Trang phải tối ưu **SEO + UX + tốc độ + mobile-first**, hiển thị đẹp như app.
+
+---
+
+### 🧭 META & LIÊN HỆ
+Tự sinh META, CONTACT, OG, TWITTER_CARD dựa vào `CONFIG`.  
+`CONFIG.TITLE` dùng cho `<title>`, H1, và thẻ OG title.  
+`CONFIG.DOMAIN` làm canonical và link base.  
+`CONFIG.MAIN_COLOR` làm theme-color + accent chính.
+
+---
+
+### 🎨 STYLE + RANDOM THEME
+STYLE={
+  STYLE_PRESET:"UltraTitanGlass",
+  ACCENT:CONFIG.MAIN_COLOR,
+  ACCENT2:"#00C49A",
+  RADIUS:"20px",
+  LANG:"vi",
+  DEFAULT_THEME:"auto",
+  BODY_BG_LIGHT:"#f9fafa",
+  BODY_BG_DARK:"#0c0d0f",
+  GLASS:true,
+  BLUR:"10px",
+  SHADOW:"0 4px 20px rgba(0,0,0,0.1)"
+};
+
+THEME_RANDOMIZER={
+  ENABLED:true,
+  POOL:[
+    "UltraTitanGlass",
+    "NeoMint",
+    "MidnightPurple",
+    "AeroGlassBlue",
+    "MinimalWhite",
+    "SunsetOrange",
+    "FacebookUltra",
+    "MotoDarkCarbon"
+  ],
+  SYNC_ACCENT:true,
+  RANDOMIZE_ON_LOAD:true
+};
+
+STYLE_SELECTOR={
+  ENABLED:true,
+  AUTO_ADAPT:true,
+  DEFAULT:"UltraTitanGlass"
+};
+
+---
+
+### ⚙️ FEATURES & APP SHELL
+FEATURES={
+  USE_CHAT:true,
+  USE_QUICKCALL:true,
+  USE_QUICKCALL_LEFT:true,
+  USE_CARD_TILT:true,
+  USE_SCROLL_ANIM:true,
+  USE_VIEW_TRANSITIONS:true,
+  USE_CONTACT_FORM:true,
+  USE_HERO_MINIAPP:true
+};
+
+APP_SHELL={
+  ENABLED:true,
+  SYNC_MENU_FOOTER:true,
+  STYLE_MATCH_THEME:true,
+  MENU_MODE:"glass-fixed",
+  FOOTER_MODE:"mini-dock",
+  HERO_MODE:"service-grid",
+  AUTO_THEME_SYNC:true
+};
+
+---
+
+### 📋 MENU & FOOTER
+Tự tạo MENU và FOOTER dựa theo `CONFIG.DOMAIN`:
+MENU gồm:
+- Trang chủ  
+- Giới thiệu  
+- Dịch vụ  
+- Bảng giá  
+- FAQ  
+- Liên hệ  
+- Điều khoản  
+- Bảo mật  
+
+FOOTER gồm các liên kết mạng xã hội:
+Facebook, Zalo, TripAdvisor, Website, Instagram, cùng số điện thoại và email từ CONFIG.
+
+---
+
+### 🚀 HERO MINI-APP
+HERO_MINIAPP={
+  ENABLED:true,
+  TYPE:"service-grid",
+  TITLE:"Đặt xe nhanh cùng Nguyễn Tú",
+  SUBTITLE:"Chọn loại xe bạn cần và nhận xe trong 20–40 phút",
+  BUTTONS:[
+    {"label":"🚀 Đặt xe ngay","href":"lienhe.html"},
+    {"label":"🛵 Xem bảng giá","href":"banggia.html"},
+    {"label":"💬 Chat MotoAI","href":"#motoai"}
+  ]
+};
+
+---
+
+### 🧱 BODY_SECTIONS
+BODY_SECTIONS={
+  USE_FADEIN:true,
+  SECTIONS:[
+    {"TITLE":"Giới thiệu dịch vụ","TYPE":"intro","CONTENT":["Dịch vụ cho thuê xe máy Hà Nội chuyên nghiệp, uy tín, giao xe nhanh, bảo dưỡng định kỳ."]},
+    {"TITLE":"Ưu điểm nổi bật","TYPE":"benefits","POINTS":["Xe đời mới, tiết kiệm nhiên liệu.","Thủ tục đơn giản.","Giao tận nơi nhanh chóng.","Hỗ trợ 24/7."]},
+    {"TITLE":"Quy trình thuê xe","TYPE":"steps","STEPS":["Chọn xe.","Liên hệ xác nhận.","Giao xe tận nơi.","Thanh toán & sử dụng."]},
+    {"TITLE":"Đánh giá khách hàng","TYPE":"testimonials","REVIEWS":[{"name":"Khách A","text":"Xe đẹp, giao nhanh, giá hợp lý.","stars":5},{"name":"Khách B","text":"Dịch vụ chu đáo, nhân viên thân thiện.","stars":5}]}
+  ]
+};
+
+---
+
+### 🧩 TỐI ƯU SEO + UX + HIỆU SUẤT
+SEO_HEADING_STRUCTURE={AUTO_H1:true,AUTO_H2_FROM_SECTIONS:true,LIMIT_H1:1};
+SEO_BREADCRUMB={ENABLED:true,PATH:[{"Trang chủ":"index.html"},{"Dịch vụ":"dichvu.html"},{"Thuê xe máy":"index.html"}]};
+PERFORMANCE_OPTIMIZE={PRELOAD:["Inter","Material Symbols Rounded","Font Awesome 6"],LAZY_JS:true,INLINE_CRITICAL_CSS:true,MINIFY_HTML:true};
+SMART_SCROLL_CONTEXT={ENABLED:true,MENU_TO_SECTION:true,SMOOTH_SCROLL:true};
+ENGAGE_BOX={ENABLED:true,POSITION:"bottom-right",MESSAGE:"Bạn cần thuê xe? Chat ngay!",BUTTONS:[{"label":"💬 Zalo","href":CONFIG.ZALO},{"label":"📞 Gọi","href":"tel:"+CONFIG.PHONE}]};
+PWA_HINT={ENABLED:true,INSTALLABLE:true,DISPLAY_MODE:"standalone"};
+
+---
+
+### 🔍 KIỂM TRA & HƯỚNG DẪN GEMINI
+KIEM_TRA_MENU_FOOTER={
+  MENU_EXPECT:["index.html","gioithieu.html","dichvu.html","banggia.html","dieukhoan.html","baomat.html","faq.html","lienhe.html"],
+  FOOTER_EXPECT:["index.html","gioithieu.html","dichvu.html","banggia.html","dieukhoan.html","baomat.html","faq.html","lienhe.html"],
+  auto_fix:true,
+  ON_ERROR:"Nếu phát hiện link sai → tự sửa trùng MENU."
+};
+
+---
+
+### 🌈 NÂNG CẤP TOÀN DIỆN CHO GEMINI (AI + UX + SEO + HIỆU ỨNG)
+
+AI_DIRECTIVE="Sinh giao diện theo cảm hứng app di động, hiệu ứng glassmorphism, shadow mềm, layout responsive, tối ưu UX theo hướng chạm – phản hồi nhanh. Tự điều chỉnh ánh sáng, tone màu theo theme, bố cục rõ ràng, tập trung CTA chính.";
+
+INTERACT_LAYER={
+  HOVER_CARD:true,
+  BUTTON_RIPPLE:true,
+  ICON_BOUNCE:true,
+  IMAGE_TILT:true,
+  SMOOTH_SCROLL:true,
+  TRANSITION_EASE:"cubic-bezier(0.25,0.1,0.25,1)"
+};
+
+SMART_SEO={
+  AUTO_KEYWORDS:true,
+  LINK_DENSITY_MAX:5,
+  AUTO_INTERNAL_LINK:true,
+  TITLE_MATCH_H1:true,
+  REL_CANONICAL_FIX:true,
+  LAZY_OG:true,
+  AUTO_META_REWRITE:true
+};
+
+USER_FLOW_HINTS={
+  DEFAULT_PATH:["Trang chủ","Dịch vụ","Bảng giá","Liên hệ"],
+  TIME_ON_SECTION:5,
+  CTA_BEHAVIOR:"focus-first-button",
+  SCROLL_ANIM_EASE:"ease-out",
+  INTERACTION_TONE:"friendly-UX"
+};
+
+VALIDATION={
+  HTML:true,
+  LINK:true,
+  ACCESSIBILITY:true,
+  SEO:true,
+  PERFORMANCE:true,
+  REPORT:"console",
+  FIX_MINOR:true
+};
+
+CREATIVE_HINTS_EXTRA={
+  AI_STYLE_NOTE:"Tăng độ phản chiếu, đổ bóng nhẹ, ripple khi click, fade-in toàn trang, hiệu ứng glass layer mượt.",
+  UX_NOTE:"Menu cố định, footer mini-app, padding hợp lý, icon và text cân đối, nút CTA nổi bật.",
+  SEO_NOTE:"3–5 internal link tự nhiên, meta tag đồng nhất H1/H2, preload font, lazyload hình, internal backlink chuẩn.",
+  PERFORMANCE_NOTE:"Giảm DOM load, inline CSS cần thiết, defer script, tránh repaint layout."
+};
+
+---
+
+**Kết thúc:**  
+> Chạy generator để xuất `index.html` hoàn chỉnh, giao diện glassmorphism, theme ngẫu nhiên, UX cực mượt, SEO tự động, tốc độ cao, tương tác thân thiện, tối ưu toàn diện cho Gemini.
