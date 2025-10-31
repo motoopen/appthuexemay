@@ -9,7 +9,7 @@
   // ===== Config
   const DEF = {
     brand: "Motoopen",
-    phone: "0857255868",
+    phone: "0942467674",
     zalo:  "",
     map:   "",
     avatar: "👩‍💼",
