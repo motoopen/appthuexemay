@@ -227,13 +227,13 @@
 
   // ===== SmartCalc
   const PRICE_TABLE = {
-    'xe số':      { day:[130000,150000], week:[600000], month:[1000000,1200000] },
+    'xe số':      { day:[140000,150000], week:[600000], month:[1000000,1200000] },
     'air blade':  { day:[200000], week:[800000], month:[1400000] },
     'vision':     { day:[200000], week:[900000], month:[2000000] },
     'xe điện':    { day:[200000], week:[800000], month:[1500000] },
     '50cc':       { day:[200000], week:[800000], month:[1800000] },
     'xe côn tay': { day:[350000], week:[1200000], month:[2500000] },
-    'xe giá rẻ':  { day:[100000], week:[500000], month:[900000] }
+    'xe giá rẻ':  { day:[120000], week:[500000], month:[900000] }
   };
   function formatRange(arr){ if(!arr||!arr.length) return null; return arr.length===1? nfVND(arr[0])+'đ' : nfVND(arr[0])+'–'+nfVND(arr[1])+'đ'; }
   function summariseType(type){
